@@ -1,3 +1,59 @@
+* {
+font-family: 'Sedgwick Ave', cursive;
+}
+
+
+.header-style {
+  height: 30%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 0 0 0;
+  background-color: #1794A0;
+  font-size: 200%;
+  color: white;
+  padding-left: 20px;
+  text-shadow: 9px 4px #E2B76B;
+}
+
+.button-style {
+  width: 100px;
+  height: 35px;
+  border-radius: 12px;
+  background-color: #1794A0;
+  box-shadow: 5px 4px #E2B76B;
+}
+
+main {
+  background-color: #EE7C58
+}
+
+/* .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 130px;
+}
+.section-style {
+  display: flex
+  align-items: center;
+  flex-grow: 1
+  /* display: inline-block; */
+  height: 100%;
+  /* width: 33%; */
+  border: 2px solid red;
+  /* position: relative; */
+} */
+
+.bear-body {
+  height: 30%;
+  width: 30%;
+}
+
+
+
 .outfits-list img {
   max-width:12px;
 }
