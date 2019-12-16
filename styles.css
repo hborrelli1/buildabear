@@ -22,6 +22,7 @@ h1 {
 
 h3 {
   font-size: 2.6em;
+  margin-bottom: 15px;
 }
 
 body {
@@ -38,19 +39,34 @@ main {
 }
 
 .outfits-list .button-style {
-  width: 80%;
-  margin-bottom: 1em;
+  width: 100%;
+  margin-bottom: 1.5em;
+  background-color: white;
+  color: #1794A0;
+  border: 0;
+  /* box-shadow: 5px 4px #EE7C58; */
+  background-color: #F7E3DA;
+  height: 3em;
+  text-align: left;
+  padding-left: 25px;
+  line-height: 2em;
+  font-size: 1.7em;
+  position: relative;
 }
 
 .button-style {
-  width: 100px;
   height: 35px;
-  border-radius: 12px;
-  background-color: #1794A0;
-  box-shadow: 5px 4px #E2B76B;
+  border: 2px solid #1794A0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  background-color: white;
+  /* box-shadow: -5px 4px #E2B76B; */
   font-size: 20px;
-  color: white;
+  color: #1794A0;
   font-family: 'Josefin Sans', sans-serif;
+  padding: 5px 20px;
+  line-height: 26px;
 }
 
 .flex-container {
@@ -58,7 +74,15 @@ main {
 }
 
 .body-column {
-  width: 33.3%;
+  width: 28%;
+}
+
+.column2 {
+  width: 44%;
+}
+
+.bear-body {
+  width: 100%;
 }
 
 .save-outfit {
@@ -94,5 +118,8 @@ lative; */
 
 
 .outfits-list img {
-  max-width:12px;
+  max-width: 16px;
+  right: 25px;
+  position: absolute;
+  top: calc(50% - 8px);
 }
