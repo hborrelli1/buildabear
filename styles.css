@@ -10,6 +10,7 @@ color: #EE7C58;
   font-size: 200%;
   text-align: center;
   margin: 0;
+  font-family: 'Josefin Sans', sans-serif;
 
 }
 
@@ -67,6 +68,13 @@ main {
   font-family: 'Josefin Sans', sans-serif;
   padding: 5px 20px;
   line-height: 26px;
+  outline: none;
+}
+
+.button-style:hover {
+  background-color: #1794A0;
+  color: white;
+  border: 0;
 }
 
 .flex-container {
