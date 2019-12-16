@@ -1,20 +1,45 @@
 * {
-font-family: 'Sedgwick Ave', cursive;
+font-family:'Josefin Sans', sans-serif;
+color: #EE7C58;
 }
 
 
 .header-style {
-  height: 30%;
   width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0 0 0 0;
   background-color: #1794A0;
   font-size: 200%;
+  text-align: center;
+  margin: 0;
+
+}
+
+h1 {
+  text-shadow: 5px 3px #E2B76B;
   color: white;
-  padding-left: 20px;
-  text-shadow: 9px 4px #E2B76B;
+  padding: 1em 0;
+  margin: 0;
+}
+
+h3 {
+  font-size: 2.6em;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  padding: 20px;
+}
+
+.column3 {
+  text-align: center;
+}
+
+.outfits-list .button-style {
+  width: 80%;
+  margin-bottom: 1em;
 }
 
 .button-style {
@@ -23,11 +48,33 @@ font-family: 'Sedgwick Ave', cursive;
   border-radius: 12px;
   background-color: #1794A0;
   box-shadow: 5px 4px #E2B76B;
+  font-size: 20px;
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-main {
+.flex-container {
   background-color: #EE7C58
 }
+
+.body-column {
+  width: 33.3%;
+}
+
+.save-outfit {
+  text-align: center;
+}
+
+.save-outfit input {
+  width: 75%;
+  height: 30px;
+  font-size: 1.3em;
+  padding: 5px;
+  display: block;
+  margin: 0 auto 1em;
+}
+
+
 
 /* .container {
   display: flex;
@@ -36,15 +83,7 @@ main {
   align-items: center;
   margin-top: 130px;
 }
-.section-style {
-  display: flex
-  align-items: center;
-  flex-grow: 1
-  /* display: inline-block; */
-  height: 100%;
-  /* width: 33%; */
-  border: 2px solid red;
-  /* position: relative; */
+lative; */
 } */
 
 .bear-body {
