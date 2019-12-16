@@ -1,6 +1,11 @@
+/* Global Styles */
 * {
 color: #EE7C58;
 font-family:'Josefin Sans', sans-serif;
+}
+
+body {
+  margin: 0;
 }
 
 .header-style {
@@ -24,22 +29,27 @@ h3 {
   margin-bottom: 15px;
 }
 
-body {
-  margin: 0;
-}
-
 main {
   display: flex;
   padding: 20px;
+}
+
+/* Column Styles */
+.body-column {
+  width: 28%;
+}
+
+.column2 {
+  width: 44%;
 }
 
 .column3 {
   text-align: center;
 }
 
+/* Buttons */
 .outfits-list .button-style {
   background-color: white;
-  /* box-shadow: 5px 4px #EE7C58; */
   background-color: #F7E3DA;
   border: 0;
   color: #1794A0;
@@ -59,7 +69,6 @@ main {
   border-radius: 5px;
   color: #1794A0;
   font-family: 'Josefin Sans', sans-serif;
-  /* box-shadow: -5px 4px #E2B76B; */
   font-size: 20px;
   height: 35px;
   line-height: 26px;
@@ -75,22 +84,12 @@ main {
   color: white;
 }
 
-.flex-container {
-  background-color: #EE7C58
-}
-
-.body-column {
-  width: 28%;
-}
-
-.column2 {
-  width: 44%;
-}
-
+/* Bear */
 .bear-body {
   width: 100%;
 }
 
+/* Form Styles */
 .save-outfit {
   text-align: center;
 }
@@ -104,11 +103,7 @@ main {
   width: 75%;
 }
 
-.bear-body {
-  height: 30%;
-  width: 30%;
-}
-
+/* Outfits Column */
 .outfits-list img {
   max-width: 16px;
   position: absolute;
