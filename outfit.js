@@ -12,3 +12,5 @@ class Outfit {
 
   }
 };
+
+var outfit1 = new Outfit();
