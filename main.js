@@ -6,8 +6,16 @@ var outfit1 = new Outfit();
 hatSection.addEventListener('click', addGarment);
 
 function addGarment(event) {
+  var hat;
+
   if (event.target.classList.contains('button-style')) {
-    outfit1.garments.push(event.target.id);
+    hat = event.target.id;
+    outfit1.garments.push(hat);
+
+    for (var i = 0; i < this.children.length; i++) {
+      this.children[i].disabled = false;
+    }
+    event.target.disabled = true;
   }
 }
 
