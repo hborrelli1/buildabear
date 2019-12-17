@@ -1,8 +1,8 @@
 class Outfit {
-  constructor(id, title, garments, background){
+  constructor(id, title, background){
     this.id = id;
     this.title = title;
-    this.garments = garments;
+    this.garments = [];
     this.background = background;
   }
   addGarment(){
@@ -12,5 +12,3 @@ class Outfit {
 
   }
 };
-
-var outfit1 = new Outfit();
