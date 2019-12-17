@@ -14,11 +14,24 @@ function newOutfit() {
 
 
 function addGarment(event) {
+  if (event.target.classList.contains('button-style')) {
+    toggleActiveClass();
+  } else {
+    event.target.classList.remove('active');
+  }
   // When clicking on a button add active class to button for visual display
   // Add garment item to outfit by targeting the id in global variable
 
   // If active state already exists, remove active class and item from Garments list.
 
+}
+
+function toggleActiveClass(){
+  if (event.target.classList.contains('active')){
+    event.target.classList.remove('active');
+  } else {
+    event.target.classList.add('active');
+  }
 }
 
 
