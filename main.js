@@ -1,7 +1,13 @@
 var outfits = [];
 var hatSection = document.querySelector('.hats-list');
+var clothesSection = document.querySelector('.clothes-list');
+var accessoriesSection = document.querySelector('.accessories-list');
+var backgroundsSection = document.querySelector('.backgrounds-list');
 
 hatSection.addEventListener('click', addGarment);
+clothesSection.addEventListener('click', addGarment);
+accessoriesSection.addEventListener('click', addGarment);
+backgroundsSection.addEventListener('click', addGarment);
 
 // Create new outfit on load.
 newOutfit();
@@ -34,7 +40,11 @@ function toggleActiveClass() {
 
 function toggleGarment() {
   var currentOutfit = (outfits.length - 1);
-  outfits[currentOutfit].garments.push(event.target.id);
+  if(outfits[currentOutfit].garments.includes(event.target.id)) {
+    outfits[currentOutfit].removeGarment(event.target.id);
+  } else {
+    outfits[currentOutfit].addGarment(event.target.id);
+  }
 }
 
 
