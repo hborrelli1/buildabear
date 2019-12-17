@@ -1,5 +1,4 @@
 var outfits = [];
-var id = null;
 var hatSection = document.querySelector('.hats-list');
 
 hatSection.addEventListener('click', addGarment);
@@ -8,18 +7,24 @@ hatSection.addEventListener('click', addGarment);
 newOutfit();
 
 function newOutfit() {
+  var id = 0;
   // Generate new unique id & set to global variable above
   // now we can modify current outfit in global scope by variable above
-  genUniqueId();
+  genUniqueId(id);
 
   // Push this outfit to 'outfits' global variable ^
   outfits.push(new Outfit(id));
 }
 
 
-function genUniqueId() {
+function genUniqueId(id) {
+  console.log(id)
+  if (outfits.find(element => element.id === id)){
+    id += 1;
+    console.log(id)
+  }
   // Generate Random Number
-  
+
   // Loop through all outfits.id to check whether
   // id already exists or not
 }
