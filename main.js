@@ -1,5 +1,8 @@
 var outfits = [];
 var id = null;
+var hatSection = document.querySelector('.hats-list');
+
+hatSection.addEventListener('click', addGarment);
 
 newOutfit();
 
@@ -13,17 +16,20 @@ function newOutfit() {
 }
 
 
-genUniqueId() {
+function genUniqueId() {
+  // Generate Random Number
 
+  // Loop through all outfits.id to check whether
+  // id already exists or not
 }
 
-// add event listener to hats section
 
+function addGarment(event) {
+  // When clicking on a button add active class to button for visual display
+  // Add garment item to outfit by targeting the id in global variable
 
-// When clicking on a button add active class to button for visual display
-// Add garment item to outfit by targeting the id in global variable
-
-// If garment is already active, remove garment from object garment list.
+  // If garment is already active, remove garment from object garment list.
+}
 
 
 
