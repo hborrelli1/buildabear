@@ -1,14 +1,22 @@
 class Outfit {
-  constructor(id, title, garments, background){
+  constructor(id){
     this.id = id;
-    this.title = title;
-    this.garments = garments;
-    this.background = background;
+    this.title = '';
+    this.garments = [];
+    this.background = '';
   }
-  addGarment(){
 
+  addGarment(item){
+    this.garments.push(item);
   }
-  removeGarment(){
 
+  removeGarment(item){
+    if (this.garments.includes(item)) {
+      this.garments.splice(this.garments.indexOf(item), 1);
+    }
+  }
+
+  changeBackground(background) {
+    this.background = background
   }
 };
