@@ -19,7 +19,7 @@ function newOutfit() {
 
 function genUniqueId() {
   // Generate Random Number
-
+  
   // Loop through all outfits.id to check whether
   // id already exists or not
 }
@@ -35,6 +35,7 @@ function addGarment(event) {
 
 
 // Toggle functions for managing garments in each category.
+
 
 /* Notes */
 // Random ID is stored as ID property in new object

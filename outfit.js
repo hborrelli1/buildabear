@@ -7,7 +7,7 @@ class Outfit {
   }
 
   addGarment(item){
-    this.garments.push(item)
+    this.garments.push(item);
   }
 
   removeGarment(item){
