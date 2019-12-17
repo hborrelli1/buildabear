@@ -1,17 +1,21 @@
 var outfits = [];
 var id = null;
 
-// Create new outfit on load
 newOutfit();
 
 function newOutfit() {
   // Generate new unique id & set to global variable above
   // now we can modify current outfit in global scope by variable above
+  genUniqueId();
 
   // Push this outfit to 'outfits' global variable ^
   outfits.push(new Outfit(id));
 }
 
+
+genUniqueId() {
+
+}
 
 // add event listener to hats section
 
