@@ -105,6 +105,9 @@ main {
 /* Bear */
 .bear-body {
   width: 90%;
+  margin-top: 30%;
+  z-index: 0;
+  position: absolute;
 }
 
 /* Form Styles */
@@ -128,3 +131,26 @@ main {
   right: 25px;
   top: calc(50% - 8px);
 }
+
+/* Garments */
+.garment {
+  visibility: hidden;
+}
+
+.bowtie-accessories {
+  position: absolute;
+  z-index: 1;
+  width: 25%;
+  height: auto;
+  top: 3%;
+  left: 27%;
+  transform: rotate(-15deg)
+}
+
+.bear-container {
+  position: relative;
+  width: 550px;
+  border: 1px solid red;
+}
+
+/* create fixed width for container (eventually create break points to scale up/down) */
