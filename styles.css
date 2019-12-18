@@ -1,7 +1,8 @@
 /* Global Styles */
 * {
-color: #EE7C58;
-font-family:'Josefin Sans', sans-serif;
+  color: #EE7C58;
+  font-family:'Josefin Sans', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -41,10 +42,15 @@ main {
 
 .column2 {
   width: 44%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
 }
 
 .column3 {
   text-align: center;
+  padding-left: 30px;
 }
 
 /* Buttons */
@@ -98,7 +104,7 @@ main {
 
 /* Bear */
 .bear-body {
-  width: 100%;
+  width: 90%;
 }
 
 /* Form Styles */
