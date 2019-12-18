@@ -3,6 +3,7 @@ var hatSection = document.querySelector('.hats-list');
 var clothesSection = document.querySelector('.clothes-list');
 var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
+var hatBtns = document.querySelectorAll('.hats-list .button-style');
 
 hatSection.addEventListener('click', addGarment);
 clothesSection.addEventListener('click', addGarment);
@@ -18,7 +19,6 @@ function newOutfit() {
 }
 
 
-
 function addGarment(event) {
   if (event.target.classList.contains('button-style')) {
     toggleActiveClass();
@@ -27,7 +27,6 @@ function addGarment(event) {
   // Add garment item to outfit by targeting the id in global variable
 
   // If active state already exists, remove active class and item from Garments list.
-
 }
 
 function toggleActiveClass() {

@@ -7,6 +7,14 @@ class Outfit {
   }
 
   addGarment(item){
+    assignHat(){
+      if (event.target.classList.contains('.hats-list .button-style') {
+        var hat = event.target.id;
+      })
+      // assigns hat variable to event target within hat section
+    }
+    this.garments[0] = hat;
+// target within hatBtns nodeList
     this.garments.push(item);
   }
 
