@@ -138,19 +138,20 @@ main {
 }
 
 .bowtie-accessories {
+  visibility: visible;
   position: absolute;
   z-index: 1;
-  width: 25%;
+  width: 20%;
   height: auto;
-  top: 3%;
-  left: 27%;
-  transform: rotate(-15deg)
+  top: 6.6%;
+  left: 33%;
+  transform: rotate(10deg)
 }
 
 .bear-container {
   position: relative;
   width: 550px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 /* create fixed width for container (eventually create break points to scale up/down) */
