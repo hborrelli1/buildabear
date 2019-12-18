@@ -80,8 +80,20 @@ main {
 
 .button-style:hover {
   background-color: #1794A0;
-  border: 0;
+  border: 2px solid #1794A0;
   color: white;
+  opacity: .7;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #1794A0;
+  border: 2px solid #1794A0;
+  color: white;
+}
+
+.button-style.active:hover {
+  opacity: 1;
 }
 
 /* Bear */
