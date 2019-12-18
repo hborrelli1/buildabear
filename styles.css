@@ -105,9 +105,15 @@ main {
 /* Bear */
 .bear-body {
   width: 90%;
-  margin-top: 30%;
-  z-index: 0;
-  position: absolute;
+  margin-top: 20%;
+  /* z-index: 0;
+  position: absolute; */
+}
+
+.bear-container {
+  position: relative;
+  width: 550px;
+  border: 1px solid red;
 }
 
 /* Form Styles */
@@ -137,21 +143,82 @@ main {
   visibility: hidden;
 }
 
-.bowtie-accessories {
-  visibility: visible;
+/* Hats */
+.top-hat {
   position: absolute;
   z-index: 1;
-  width: 20%;
-  height: auto;
-  top: 6.6%;
-  left: 33%;
-  transform: rotate(10deg)
 }
 
-.bear-container {
-  position: relative;
-  width: 550px;
-  /* border: 1px solid red; */
+.sun-hat {
+  position: absolute;
+  z-index: 2;
+}
+
+.bow-hat {
+  position: absolute;
+  z-index: 3;
+}
+
+.crown-hat {
+  position: absolute;
+  z-index: 4;
+}
+
+.spacehelmet-hat {
+  position: absolute;
+  z-index: 5;
+}
+
+/* Clothes */
+.dress-clothes {
+  position: absolute;
+  z-index: 6;
+}
+
+.vest-clothes {
+  position: absolute;
+  z-index: 7;
+}
+
+/* Accessories */
+.necklace-accessories {
+  position: absolute;
+  z-index: 8;
+  width: 25%;
+  height: auto;
+  top: 51.6%;
+  left: 30%;
+  transform: rotate(10deg);
+}
+
+.bowtie-accessories {
+  position: absolute;
+  z-index: 9;
+  width: 20%;
+  height: auto;
+  top: 49.5%;
+  left: 33%;
+  transform: rotate(10deg);
+}
+
+.watch-accessories {
+  position: absolute;
+  z-index: 10;
+  width: 11%;
+  height: auto;
+  top: 44.5%;
+  left: 14%;
+  transform: rotate(70deg);
+}
+
+.sunglasses-accessories {
+  position: absolute;
+  z-index: 11;
+  width: 24%;
+  height: auto;
+  top: 23.5%;
+  left: 35%;
+  transform: rotate(10deg);
 }
 
 /* create fixed width for container (eventually create break points to scale up/down) */
