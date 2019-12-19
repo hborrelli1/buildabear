@@ -23,13 +23,19 @@ function addGarment(event) {
   dressBear(event);
 }
 
-// Refactored functions from above
+// Refactored functions from below
 function toggleGarments(category, index) {
   if (event.target.classList.contains(category)) {
     toggleActiveClass();
-    toggleGarment(index);
+    placeGarment(index);
   }
 }
+// function toggleGarments(category, index) {
+//   if (event.target.classList.contains(category)) {
+//     toggleActiveClass();
+//     placeGarment(index);
+//   }
+// }
 
 function toggleActiveClass() {
   // If target has class of active remove class
@@ -44,11 +50,13 @@ function toggleActiveClass() {
   }
 }
 
-function toggleGarment(i) {
+function placeGarment(i) {
   if (newOutfit.garments[i] === event.target.id) {
-    newOutfit.garments.splice(i, 1, null);
+    // newOutfit.garments.splice(i, 1, null);
+    newOutfit.removeGarment(i, null);
   } else {
-    newOutfit.garments.splice(i, 1, event.target.id);
+    // newOutfit.garments.splice(i, 1, event.target.id);
+    newOutfit.addGarment(i, event.target.id);
   }
 }
 
