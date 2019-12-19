@@ -46,32 +46,14 @@ function placeGarment(i) {
   }
 }
 
-function undressBear(event, category) {
-    for(var i = 0; i < garmentAppear.length; i++) {
-      if(garmentAppear[i].classList.contains(category)){
-      garmentAppear[i].classList.remove('active-img');
-    }
-  }
-}
-
 function dressBear(event, category) {
-  undressBear(event, category);
   for(var i = 0; i < garmentAppear.length; i++) {
-    if(garmentAppear[i].classList.contains(event.target.id)){
+      if((garmentAppear[i].classList.contains('active-img')) && (garmentAppear[i].classList.contains(category))){
+      garmentAppear[i].classList.remove('active-img');
+      console.log('if')
+    } else if(garmentAppear[i].classList.contains(event.target.id)){
       garmentAppear[i].classList.add('active-img');
+      console.log('else if')
     }
   }
 }
-
-
-
-// var currentGarment = garmentAppear.find(element => element.classList.contains(event.target.id));
-// currentGarment.classList.add('active-img')
-// Toggle functions for managing garments in each category.
-
-
-/* Notes */
-// Random ID is stored as ID property in new object
-// Random ID is also set to saved outfit buttons ID on right column
-
-// How to ensure only one item from each category is added?
