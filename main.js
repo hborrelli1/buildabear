@@ -5,7 +5,7 @@ var column1 = document.querySelector('.column1');
 var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
-
+var garmentAppear = document.querySelectorAll('.garment');
 column1.addEventListener('click', addGarment);
 
 // Create new outfit on load.
@@ -23,6 +23,7 @@ function addGarment(event) {
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
   toggleGarments('backgrounds', 3);
+  dressBear(event);
 
   // If active state already exists, remove active class and item from Garments list.
 }
@@ -48,7 +49,21 @@ function toggleGarment(i) {
 
 }
 
+function dressBear(event) {
+  console.log(garmentAppear)
+  for(var i = 0; i < garmentAppear.length; i++) {
+    console.log(garmentAppear[i], 'hey');
+    if(garmentAppear[i].classList.contains(event.target.id)){
+      garmentAppear[i].classList.add('active-img');
+    }
+  }
+}
 
+
+
+
+// var currentGarment = garmentAppear.find(element => element.classList.contains(event.target.id));
+// currentGarment.classList.add('active-img')
 // Toggle functions for managing garments in each category.
 
 

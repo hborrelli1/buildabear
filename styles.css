@@ -113,6 +113,14 @@ main {
   width: 550px;
 }
 
+.garment {
+  visibility: hidden;
+}
+
+.active-img {
+  visibility: visible !important;
+}
+
 /* Form Styles */
 .save-outfit {
   text-align: center;
@@ -136,9 +144,9 @@ main {
 }
 
 /* Garments */
-.garment {
+/* .garment {
   visibility: hidden;
-}
+} */
 
 /* Hats */
 .top-hat {
