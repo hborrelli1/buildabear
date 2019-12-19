@@ -20,16 +20,3 @@ class Outfit {
     this.background = background
   }
 };
-
-
-// function valueCompare() {
-//  if (parseInt(maxInput.value) < parseInt(minInput.value) &&
-//     (minInput.value != "") && (maxInput.value != "")) {
-//         errorAlert.removeAttribute('hidden');
-//         maxInput.classList.add('max-input-border');
-//         updateBtn.setAttribute('disabled', 'disabled')
-//     } else {
-//       errorAlert.setAttribute('hidden', true);
-//       maxInput.classList.remove('max-input-border')
-//         }
-//      };
