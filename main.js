@@ -6,14 +6,10 @@ var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var garmentAppear = document.querySelectorAll('.garment');
-column1.addEventListener('click', addGarment);
-
 var id = Date.now();
 var newOutfit = new Outfit(id);
 
-// Event LIstener on the parent
-// If the event.target has class of hat
-// Add element id to index 0 of garments array.
+column1.addEventListener('click', addGarment);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
@@ -23,11 +19,10 @@ function addGarment(event) {
   dressBear(event);
 }
 
-// Refactored functions from above
 function toggleGarments(category, index) {
   if (event.target.classList.contains(category)) {
     toggleActiveClass();
-    toggleGarment(index);
+    placeGarment(index);
   }
 }
 
@@ -44,11 +39,11 @@ function toggleActiveClass() {
   }
 }
 
-function toggleGarment(i) {
+function placeGarment(i) {
   if (newOutfit.garments[i] === event.target.id) {
-    newOutfit.garments.splice(i, 1, null);
+    newOutfit.removeGarment(i, null);
   } else {
-    newOutfit.garments.splice(i, 1, event.target.id);
+    newOutfit.addGarment(i, event.target.id);
   }
 }
 
@@ -59,10 +54,3 @@ function dressBear(event) {
     }
   }
 }
-
-
-
-
-// var currentGarment = garmentAppear.find(element => element.classList.contains(event.target.id));
-// currentGarment.classList.add('active-img')
-// Toggle functions for managing garments in each category.
