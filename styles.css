@@ -107,6 +107,14 @@ main {
   width: 90%;
 }
 
+.garment {
+  visibility: hidden;
+}
+
+.active-img {
+  visibility: visible;
+}
+
 /* Form Styles */
 .save-outfit {
   text-align: center;
