@@ -118,7 +118,7 @@ main {
 }
 
 .active-img {
-  visibility: visible;
+  visibility: visible !important;
 }
 
 /* Form Styles */
@@ -144,9 +144,9 @@ main {
 }
 
 /* Garments */
-.garment {
+/* .garment {
   visibility: hidden;
-}
+} */
 
 /* Hats */
 .top-hat {
