@@ -105,6 +105,12 @@ main {
 /* Bear */
 .bear-body {
   width: 90%;
+  margin-top: 20%;
+}
+
+.bear-container {
+  position: relative;
+  width: 550px;
 }
 
 .garment {
@@ -136,3 +142,121 @@ main {
   right: 25px;
   top: calc(50% - 8px);
 }
+
+/* Garments */
+.garment {
+  visibility: hidden;
+}
+
+/* Hats */
+.top-hat {
+  position: absolute;
+  z-index: 1;
+  width: 24%;
+  height: auto;
+  top: 15.5%;
+  left: 41%;
+  transform: rotate(15deg);
+}
+
+.sun-hat {
+  position: absolute;
+  z-index: 2;
+  width: 42%;
+  height: auto;
+  top: 8.5%;
+  left: 31%;
+  transform: rotate(-9deg);
+}
+
+.bow-hat {
+  position: absolute;
+  z-index: 3;
+  width: 26%;
+  height: auto;
+  top: 17.5%;
+  left: 29%;
+}
+
+.crown-hat {
+  position: absolute;
+  z-index: 4;
+  width: 27%;
+  height: auto;
+  top: 14.5%;
+  left: 39%;
+  transform: rotate(13deg);
+}
+
+.spacehelmet-hat {
+  position: absolute;
+  z-index: 5;
+  width: 52%;
+  height: auto;
+  top: 9.5%;
+  left: 23%;
+  transform: rotate(9deg);
+}
+
+/* Clothes */
+.dress-clothes {
+  position: absolute;
+  z-index: 6;
+  width: 79%;
+  height: auto;
+  top: 22.5%;
+  left: 4%;
+  transform: rotate(6deg);
+}
+
+.vest-clothes {
+  position: absolute;
+  z-index: 7;
+  width: 86%;
+  height: auto;
+  top: 20.5%;
+  left: 2%;
+}
+
+/* Accessories */
+.necklace-accessories {
+  position: absolute;
+  z-index: 8;
+  width: 25%;
+  height: auto;
+  top: 51.6%;
+  left: 30%;
+  transform: rotate(10deg);
+}
+
+.bowtie-accessories {
+  position: absolute;
+  z-index: 9;
+  width: 20%;
+  height: auto;
+  top: 49.5%;
+  left: 33%;
+  transform: rotate(10deg);
+}
+
+.watch-accessories {
+  position: absolute;
+  z-index: 10;
+  width: 11%;
+  height: auto;
+  top: 44.5%;
+  left: 14%;
+  transform: rotate(70deg);
+}
+
+.sunglasses-accessories {
+  position: absolute;
+  z-index: 11;
+  width: 24%;
+  height: auto;
+  top: 36.5%;
+  left: 35%;
+  transform: rotate(10deg);
+}
+
+/* create fixed width for container (eventually create break points to scale up/down) */
