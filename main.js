@@ -16,20 +16,17 @@ function addGarment(event) {
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
   toggleGarments('backgrounds', 3);
-  dressBear(event);
-  // undressBear(event);
-  // If active state already exists, remove active class and item from Garments list.
 }
 
 function toggleGarments(category, index) {
   if (event.target.classList.contains(category)) {
     toggleActiveClass();
     placeGarment(index);
+    dressBear(event, category);
   }
 }
 
 function toggleActiveClass() {
-  // If target has class of active remove class
   if (event.target.classList.contains('active')){
     event.target.classList.remove('active');
   } else {
@@ -49,16 +46,16 @@ function placeGarment(i) {
   }
 }
 
-// undressBear(event);
-
-function undressBear(event) {
+function undressBear(event, category) {
     for(var i = 0; i < garmentAppear.length; i++) {
+      if(garmentAppear[i].classList.contains(category)){
       garmentAppear[i].classList.remove('active-img');
+    }
   }
 }
 
-function dressBear(event) {
-  undressBear();
+function dressBear(event, category) {
+  undressBear(event, category);
   for(var i = 0; i < garmentAppear.length; i++) {
     if(garmentAppear[i].classList.contains(event.target.id)){
       garmentAppear[i].classList.add('active-img');
