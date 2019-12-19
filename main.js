@@ -15,7 +15,6 @@ function addGarment(event) {
   toggleGarments('hat', 0);
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
-  toggleGarments('backgrounds', 3);
 }
 
 function toggleGarments(category, index) {
@@ -43,6 +42,16 @@ function placeGarment(i) {
     newOutfit.removeGarment(i, null);
   } else {
     newOutfit.addGarment(i, event.target.id);
+  }
+}
+
+column1.addEventListener('click', placeBackground);
+
+function placeBackground(background) {
+  if (newOutfit.background === event.target.id) {
+    newOutfit.changeBackground(null)
+  } else {
+    newOutfit.changeBackground(event.target.id)
   }
 }
 
