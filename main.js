@@ -6,30 +6,25 @@ var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var garmentAppear = document.querySelectorAll('.garment');
-column1.addEventListener('click', addGarment);
-
 var id = Date.now();
 var newOutfit = new Outfit(id);
 
-// Event LIstener on the parent
-// If the event.target has class of hat
-// Add element id to index 0 of garments array.
+column1.addEventListener('click', addGarment);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
   toggleGarments('backgrounds', 3);
-  // dressBear(event);
+  dressBear(event);
   // undressBear(event);
   // If active state already exists, remove active class and item from Garments list.
 }
 
-// Refactored functions from above
 function toggleGarments(category, index) {
   if (event.target.classList.contains(category)) {
     toggleActiveClass();
-    toggleGarment(index);
+    placeGarment(index);
   }
 }
 
@@ -38,36 +33,38 @@ function toggleActiveClass() {
   if (event.target.classList.contains('active')){
     event.target.classList.remove('active');
   } else {
-    // If it does not contain the class, remove 'active' class from all siblings
     var parent = event.target.parentNode;
     for (var i = 0; i < parent.children.length; i++) {
       parent.children[i].classList.remove('active');
-      // Remove all images from category from Bear
     }
-    // Add new item image to bear
-    // Add class to newly clicked item.
     event.target.classList.add('active');
   }
 }
 
-function toggleGarment(i) {
-  newOutfit.garments.splice(i, 1, event.target.id);
+function placeGarment(i) {
+  if (newOutfit.garments[i] === event.target.id) {
+    newOutfit.removeGarment(i, null);
+  } else {
+    newOutfit.addGarment(i, event.target.id);
+  }
 }
 
-undressBear(event);
+// undressBear(event);
 
 function undressBear(event) {
-    for(var i = 0; i < garmentAppear.length; i++);
-      garmentAppear[i].setAttribute('hidden', true);
+    for(var i = 0; i < garmentAppear.length; i++) {
+      garmentAppear[i].classList.remove('active-img');
   }
-// function dressBear(event) {
-//   undressBear();
-//   for(var i = 0; i < garmentAppear.length; i++) {
-//     if(garmentAppear[i].classList.contains(event.target.id)){
-//       garmentAppear[i].classList.add('active-img');
-//     }
-//   }
-// }
+}
+
+function dressBear(event) {
+  undressBear();
+  for(var i = 0; i < garmentAppear.length; i++) {
+    if(garmentAppear[i].classList.contains(event.target.id)){
+      garmentAppear[i].classList.add('active-img');
+    }
+  }
+}
 
 
 

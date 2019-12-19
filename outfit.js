@@ -6,13 +6,13 @@ class Outfit {
     this.background = '';
   }
 
-  addGarment(item){
-    this.garments.push(item);
+  addGarment(i, item){
+    this.garments.splice(i, 1, item);
   }
 
-  removeGarment(item){
-    if (this.garments.includes(item)) {
-      this.garments.splice(this.garments.indexOf(item), 1);
+  removeGarment(i, item){
+    if (this.garments[i] === item) {
+      this.garments.splice(i, null);
     }
   }
 
