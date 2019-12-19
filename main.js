@@ -1,18 +1,15 @@
 var outfits = [];
+var column1 = document.querySelector('.column1');
 var hatSection = document.querySelector('.hats-list');
 var clothesSection = document.querySelector('.clothes-list');
-var column1 = document.querySelector('.column1');
 var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var garmentAppear = document.querySelectorAll('.garment');
 column1.addEventListener('click', addGarment);
 
-// Create new outfit on load.
 var id = Date.now();
 var newOutfit = new Outfit(id);
-  // outfits.push(new Outfit(id));
-// }
 
 // Event LIstener on the parent
 // If the event.target has class of hat
@@ -37,16 +34,24 @@ function toggleGarments(category, index) {
 }
 
 function toggleActiveClass() {
+  // If target has class of active remove class
   if (event.target.classList.contains('active')){
     event.target.classList.remove('active');
   } else {
+    // If it does not contain the class, remove 'active' class from all siblings
+    var parent = event.target.parentNode;
+    for (var i = 0; i < parent.children.length; i++) {
+      parent.children[i].classList.remove('active');
+      // Remove all images from category from Bear
+    }
+    // Add new item image to bear
+    // Add class to newly clicked item.
     event.target.classList.add('active');
   }
 }
 
 function toggleGarment(i) {
   newOutfit.garments.splice(i, 1, event.target.id);
-
 }
 
 function dressBear(event) {
