@@ -6,14 +6,10 @@ var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var garmentAppear = document.querySelectorAll('.garment');
-column1.addEventListener('click', addGarment);
-
 var id = Date.now();
 var newOutfit = new Outfit(id);
 
-// Event LIstener on the parent
-// If the event.target has class of hat
-// Add element id to index 0 of garments array.
+column1.addEventListener('click', addGarment);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
@@ -23,19 +19,12 @@ function addGarment(event) {
   dressBear(event);
 }
 
-// Refactored functions from below
 function toggleGarments(category, index) {
   if (event.target.classList.contains(category)) {
     toggleActiveClass();
     placeGarment(index);
   }
 }
-// function toggleGarments(category, index) {
-//   if (event.target.classList.contains(category)) {
-//     toggleActiveClass();
-//     placeGarment(index);
-//   }
-// }
 
 function toggleActiveClass() {
   // If target has class of active remove class
