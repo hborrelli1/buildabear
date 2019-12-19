@@ -15,6 +15,7 @@ function addGarment(event) {
   toggleGarments('hat', 0);
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
+  toggleGarments('backgrounds');
 }
 
 function toggleGarments(category, index) {
@@ -45,16 +46,6 @@ function placeGarment(i) {
   }
 }
 
-column1.addEventListener('click', placeBackground);
-
-function placeBackground(background) {
-  if (newOutfit.background === event.target.id) {
-    newOutfit.changeBackground(null)
-  } else {
-    newOutfit.changeBackground(event.target.id)
-  }
-}
-
 function dressBear(event, category) {
   for(var i = 0; i < garmentAppear.length; i++) {
       if((garmentAppear[i].classList.contains('active-img')) && (garmentAppear[i].classList.contains(category))){
@@ -64,5 +55,15 @@ function dressBear(event, category) {
       garmentAppear[i].classList.add('active-img');
       console.log('else if')
     }
+  }
+}
+
+column1.addEventListener('click', placeBackground);
+
+function placeBackground(background) {
+  if (newOutfit.background === event.target.id) {
+    newOutfit.changeBackground(null)
+  } else {
+    newOutfit.changeBackground(event.target.id)
   }
 }
