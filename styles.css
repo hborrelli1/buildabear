@@ -143,11 +143,6 @@ main {
   top: calc(50% - 8px);
 }
 
-/* Garments */
-/* .garment {
-  visibility: hidden;
-} */
-
 /* Hats */
 .top-hat {
   position: absolute;
