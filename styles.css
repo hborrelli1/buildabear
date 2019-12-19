@@ -114,11 +114,11 @@ main {
 }
 
 .garment {
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .active-img {
-  visibility: visible !important;
+  /* visibility: visible !important; */
 }
 
 /* Form Styles */
