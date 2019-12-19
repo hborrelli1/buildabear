@@ -21,8 +21,6 @@ function addGarment(event) {
   toggleGarments('accessories', 2);
   toggleGarments('backgrounds', 3);
   dressBear(event);
-
-  // If active state already exists, remove active class and item from Garments list.
 }
 
 // Refactored functions from above
@@ -38,26 +36,24 @@ function toggleActiveClass() {
   if (event.target.classList.contains('active')){
     event.target.classList.remove('active');
   } else {
-    // If it does not contain the class, remove 'active' class from all siblings
     var parent = event.target.parentNode;
     for (var i = 0; i < parent.children.length; i++) {
       parent.children[i].classList.remove('active');
-      // Remove all images from category from Bear
     }
-    // Add new item image to bear
-    // Add class to newly clicked item.
     event.target.classList.add('active');
   }
 }
 
 function toggleGarment(i) {
-  newOutfit.garments.splice(i, 1, event.target.id);
+  if (newOutfit.garments[i] === event.target.id) {
+    newOutfit.garments.splice(i, 1, null);
+  } else {
+    newOutfit.garments.splice(i, 1, event.target.id);
+  }
 }
 
 function dressBear(event) {
-  console.log(garmentAppear)
   for(var i = 0; i < garmentAppear.length; i++) {
-    console.log(garmentAppear[i], 'hey');
     if(garmentAppear[i].classList.contains(event.target.id)){
       garmentAppear[i].classList.add('active-img');
     }
@@ -70,10 +66,3 @@ function dressBear(event) {
 // var currentGarment = garmentAppear.find(element => element.classList.contains(event.target.id));
 // currentGarment.classList.add('active-img')
 // Toggle functions for managing garments in each category.
-
-
-/* Notes */
-// Random ID is stored as ID property in new object
-// Random ID is also set to saved outfit buttons ID on right column
-
-// How to ensure only one item from each category is added?
