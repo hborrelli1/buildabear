@@ -6,10 +6,15 @@ var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var garmentAppear = document.querySelectorAll('.garment');
+var form = document.querySelector('.save-outfit');
+var saveOutfitInput = document.getElementById('saveOutfitInput');
+var saveOutfitBtn = document.getElementById('saveOutfitBtn');
+var savedOutfitsList = document.querySelector('.outfits-list');
 var id = Date.now();
 var newOutfit = new Outfit(id);
 
 column1.addEventListener('click', addGarment);
+saveOutfitBtn.addEventListener('click', saveOutfit);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
@@ -56,4 +61,10 @@ function dressBear(event, category) {
       console.log('else if')
     }
   }
+}
+
+function saveOutfit() {
+  var outfitName = saveOutfitInput.value;
+  var savedOutfitCard = `<button class="button-style">${outfitName}<img src="assets/close.svg" alt="Close"></button>`;
+  savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
 }
