@@ -1,15 +1,20 @@
 var outfits = [];
 var column1 = document.querySelector('.column1');
+// var column2 = document.querySelector('.column2');
 var hatSection = document.querySelector('.hats-list');
 var clothesSection = document.querySelector('.clothes-list');
 var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var garmentAppear = document.querySelectorAll('.garment');
+//next two variables allow us to use clearInputField function
+var saveOutfit = document.querySelector('.save-button');
+var outFitInput = document.querySelector('.outfit-namer');
 var id = Date.now();
 var newOutfit = new Outfit(id);
 
 column1.addEventListener('click', addGarment);
+saveOutfit.addEventListener('click', clearInputField);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
@@ -50,10 +55,12 @@ function dressBear(event, category) {
   for(var i = 0; i < garmentAppear.length; i++) {
       if((garmentAppear[i].classList.contains('active-img')) && (garmentAppear[i].classList.contains(category))){
       garmentAppear[i].classList.remove('active-img');
-      console.log('if')
     } else if(garmentAppear[i].classList.contains(event.target.id)){
       garmentAppear[i].classList.add('active-img');
-      console.log('else if')
     }
   }
+}
+
+function clearInputField(saveOutfit) {
+  outFitInput.value = "";
 }
