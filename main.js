@@ -10,12 +10,12 @@ var id = Date.now();
 var newOutfit = new Outfit(id);
 
 column1.addEventListener('click', addGarment);
+column1.addEventListener('click', placeBackground);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
-  toggleGarments('backgrounds');
 }
 
 function toggleGarments(category, index) {
@@ -58,12 +58,13 @@ function dressBear(event, category) {
   }
 }
 
-column1.addEventListener('click', placeBackground);
-
 function placeBackground(background) {
-  if (newOutfit.background === event.target.id) {
-    newOutfit.changeBackground(null)
-  } else {
-    newOutfit.changeBackground(event.target.id)
+  if (event.target.classList.contains('backgrounds')) {
+    toggleActiveClass();
+    if (newOutfit.background === event.target.id) {
+      newOutfit.changeBackground(null)
+    } else {
+      newOutfit.changeBackground(event.target.id)
+    }
   }
 }
