@@ -20,7 +20,7 @@ function addGarment(event) {
   toggleGarments('hat', 0);
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
-  toggleGarments('backgrounds', 3);
+  toggleGarments('backgrounds');
 }
 
 function toggleGarments(category, index) {
@@ -53,12 +53,10 @@ function placeGarment(i) {
 
 function dressBear(event, category) {
   for(var i = 0; i < garmentAppear.length; i++) {
-      if((garmentAppear[i].classList.contains('active-img')) && (garmentAppear[i].classList.contains(category))){
+    if((garmentAppear[i].classList.contains('active-img')) && (garmentAppear[i].classList.contains(category))){
       garmentAppear[i].classList.remove('active-img');
-      console.log('if')
     } else if(garmentAppear[i].classList.contains(event.target.id)){
       garmentAppear[i].classList.add('active-img');
-      console.log('else if')
     }
   }
 }
