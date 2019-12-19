@@ -41,10 +41,8 @@ function toggleActiveClass() {
 
 function placeGarment(i) {
   if (newOutfit.garments[i] === event.target.id) {
-    // newOutfit.garments.splice(i, 1, null);
     newOutfit.removeGarment(i, null);
   } else {
-    // newOutfit.garments.splice(i, 1, event.target.id);
     newOutfit.addGarment(i, event.target.id);
   }
 }
@@ -56,10 +54,3 @@ function dressBear(event) {
     }
   }
 }
-
-
-
-
-// var currentGarment = garmentAppear.find(element => element.classList.contains(event.target.id));
-// currentGarment.classList.add('active-img')
-// Toggle functions for managing garments in each category.
