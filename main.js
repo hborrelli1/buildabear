@@ -67,6 +67,7 @@ clearInputField(saveOutfit);
 
 function clearInputField(saveOutfit) {
   outFitInput.value = "";
+  // saveOutfit.classList.add('disable-save')
   disableSaveButton(event);
 }
 
@@ -74,5 +75,5 @@ function disableSaveButton(event){
   if(outFitInput.value != "") {
     console.log('yo');
     saveOutfit.classList.remove('disable-save');
-  }
+  } else(saveOutfit.classList.add('disable-save'))
 }
