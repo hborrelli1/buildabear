@@ -6,21 +6,20 @@ var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var garmentAppear = document.querySelectorAll('.garment');
-var form = document.querySelector('.save-outfit');
-var saveOutfitInput = document.getElementById('saveOutfitInput');
-var saveOutfitBtn = document.getElementById('saveOutfitBtn');
-var savedOutfitsList = document.querySelector('.outfits-list');
+var backgroundsArray = document.querySelectorAll('.backgrounds');
 var id = Date.now();
 var newOutfit = new Outfit(id);
+var bearContainer = document.querySelector('.bear-container');
 
 column1.addEventListener('click', addGarment);
+column1.addEventListener('click', placeBackground);
 saveOutfitBtn.addEventListener('click', saveOutfit);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
-  toggleGarments('backgrounds');
+  // toggleGarments('backgrounds');
 }
 
 function toggleGarments(category, index) {
@@ -57,6 +56,46 @@ function dressBear(event, category) {
       garmentAppear[i].classList.remove('active-img');
     } else if(garmentAppear[i].classList.contains(event.target.id)){
       garmentAppear[i].classList.add('active-img');
+    }
+  }
+}
+
+function placeBackground(background) {
+  if (event.target.classList.contains('backgrounds')) {
+    changeBackgroundData(background);
+    changeBackgroundImg();
+    toggleActiveClass();
+  }
+}
+
+function changeBackgroundData(background) {
+if (newOutfit.background === event.target.id) {
+  newOutfit.changeBackground(null)
+} else {
+  newOutfit.changeBackground(event.target.id)
+  }
+}
+
+
+function changeBackgroundImg() {
+  for(var i = 0; i < backgroundsArray.length; i++) {
+  if(event.target.classList.contains('active')){
+    bearContainer.style.backgroundImage = "";
+    bearContainer.style.backgroundColor = "";
+  } else if(event.target.id === 'beach-background'){
+    bearContainer.style.backgroundImage = "url(assets/beach.png)"
+  } else if(event.target.id === 'park-background'){
+    bearContainer.style.backgroundImage = "url(assets/park.png)"
+  } else if(event.target.id === 'space-background'){
+    bearContainer.style.backgroundImage = "url(assets/outerspace.png)"
+  } else if(event.target.id === 'hearts-background'){
+    bearContainer.style.backgroundImage ="url(assets/hearts.png)"
+  } else if(event.target.id === 'blue-background'){
+    bearContainer.style.backgroundImage = "";
+    bearContainer.style.backgroundColor = "#1794A0";
+  } else if(event.target.id === 'yellow-background'){
+    bearContainer.style.backgroundImage = "";
+    bearContainer.style.backgroundColor = "#E2B76B";
     }
   }
 }

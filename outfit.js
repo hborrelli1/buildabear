@@ -2,7 +2,7 @@ class Outfit {
   constructor(id){
     this.id = id;
     this.title = '';
-    this.garments = [null, null, null, null];
+    this.garments = [null, null, null];
     this.background = '';
   }
 
@@ -17,6 +17,6 @@ class Outfit {
   }
 
   changeBackground(background) {
-    this.background = background
+    this.background = background;
   }
 };
