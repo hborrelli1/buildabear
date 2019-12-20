@@ -60,9 +60,9 @@ function dressBear(event, category) {
 
 function placeBackground(background) {
   if (event.target.classList.contains('backgrounds')) {
-    toggleActiveClass();
     changeBackgroundData(background);
     changeBackgroundImg();
+    toggleActiveClass();
   }
 }
 
@@ -75,13 +75,13 @@ if (newOutfit.background === event.target.id) {
 }
 
 
-// function changeBackgroundImg(event, category) {
 function changeBackgroundImg() {
   for(var i = 0; i < backgroundsArray.length; i++) {
-  if(event.target.id === 'beach-background'){
-    bearContainer.style.backgroundImage="url(assets/beach.png)"
-  } else if((event.target.id === 'beach-background') &&  (bearContainer.style.backgroundImage === "url(assets/beach.png)")){
+  if(event.target.classList.contains('active')){
     bearContainer.style.backgroundImage = "";
+    bearContainer.style.backgroundColor = "";
+  } else if(event.target.id === 'beach-background'){
+    bearContainer.style.backgroundImage = "url(assets/beach.png)"
   } else if(event.target.id === 'park-background'){
     bearContainer.style.backgroundImage = "url(assets/park.png)"
   } else if(event.target.id === 'space-background'){
@@ -97,11 +97,3 @@ function changeBackgroundImg() {
     }
   }
 }
-
-// if(backgroundsArray[i].)
-//
-//     } else if(backgroundsArray[i].classList.contains(event.target.id)){
-//       backgroundsArray[i].classList.add('active-img');
-//     }
-//   }
-// }
