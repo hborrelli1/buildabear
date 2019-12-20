@@ -8,13 +8,14 @@ var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var garmentAppear = document.querySelectorAll('.garment');
 //next two variables allow us to use clearInputField function
-var saveOutfit = document.querySelector('.save-button');
+var saveOutfit = document.querySelector('.disable-save');
 var outFitInput = document.querySelector('.outfit-namer');
 var id = Date.now();
 var newOutfit = new Outfit(id);
 
 column1.addEventListener('click', addGarment);
 saveOutfit.addEventListener('click', clearInputField);
+outFitInput.addEventListener('input', disableSaveButton)
 
 function addGarment(event) {
   toggleGarments('hat', 0);
@@ -61,6 +62,17 @@ function dressBear(event, category) {
   }
 }
 
+
+clearInputField(saveOutfit);
+
 function clearInputField(saveOutfit) {
   outFitInput.value = "";
+  disableSaveButton(event);
+}
+
+function disableSaveButton(event){
+  if(outFitInput.value != "") {
+    console.log('yo');
+    saveOutfit.classList.remove('disable-save');
+  }
 }
