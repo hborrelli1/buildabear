@@ -122,6 +122,16 @@ main {
   visibility: visible !important;
 }
 
+.disable-save {
+  background-color: #1794A0;
+  border: 2px solid #1794A0;
+  color: white;
+  opacity: .7;
+  /* pointer-events: none; */
+  cursor: alias !important;
+
+}
+
 /* Form Styles */
 .save-outfit {
   text-align: center;
