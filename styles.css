@@ -253,5 +253,3 @@ main {
   left: 35%;
   transform: rotate(10deg);
 }
-
-/* create fixed width for container (eventually create break points to scale up/down) */
