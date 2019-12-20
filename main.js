@@ -67,6 +67,7 @@ clearInputField(saveOutfit);
 
 function clearInputField(saveOutfit) {
   outFitInput.value = "";
+  dressBear();
   // saveOutfit.classList.add('disable-save')
   disableSaveButton(event);
 }
