@@ -110,7 +110,7 @@ clearInputField(saveOutfit);
 
 function clearInputField(saveOutfit) {
   outFitInput.value = "";
-  dressBear();
+  // dressBear();
   // saveOutfit.classList.add('disable-save')
   disableSaveButton(event);
 }
@@ -120,6 +120,8 @@ function disableSaveButton(event){
     console.log('yo');
     saveOutfit.classList.remove('disable-save');
   } else(saveOutfit.classList.add('disable-save'))
+}
+
 
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
