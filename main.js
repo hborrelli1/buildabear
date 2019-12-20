@@ -100,6 +100,22 @@ function changeBackgroundImg() {
   }
 }
 
+clearInputField(saveOutfit);
+
+function clearInputField(saveOutfit) {
+  outFitInput.value = "";
+  // saveOutfit.classList.add('disable-save')
+  disableSaveButton(event);
+}
+
+function disableSaveButton(event){
+  if(outFitInput.value != "") {
+    console.log('yo');
+    saveOutfit.classList.remove('disable-save');
+  } else(saveOutfit.classList.add('disable-save'))
+}
+
+
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
   var savedOutfitCard = `<button class="button-style">${outfitName}<img src="assets/close.svg" alt="Close"></button>`;
