@@ -13,11 +13,13 @@ var bearContainer = document.querySelector('.bear-container');
 
 column1.addEventListener('click', addGarment);
 column1.addEventListener('click', placeBackground);
+saveOutfitBtn.addEventListener('click', saveOutfit);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
+  // toggleGarments('backgrounds');
 }
 
 function toggleGarments(category, index) {
@@ -50,7 +52,7 @@ function placeGarment(i) {
 
 function dressBear(event, category) {
   for(var i = 0; i < garmentAppear.length; i++) {
-      if((garmentAppear[i].classList.contains('active-img')) && (garmentAppear[i].classList.contains(category))){
+    if((garmentAppear[i].classList.contains('active-img')) && (garmentAppear[i].classList.contains(category))){
       garmentAppear[i].classList.remove('active-img');
     } else if(garmentAppear[i].classList.contains(event.target.id)){
       garmentAppear[i].classList.add('active-img');
@@ -96,4 +98,10 @@ function changeBackgroundImg() {
     bearContainer.style.backgroundColor = "#E2B76B";
     }
   }
+}
+
+function saveOutfit() {
+  var outfitName = saveOutfitInput.value;
+  var savedOutfitCard = `<button class="button-style">${outfitName}<img src="assets/close.svg" alt="Close"></button>`;
+  savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
 }
