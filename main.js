@@ -1,5 +1,6 @@
 var outfits = [];
 var column1 = document.querySelector('.column1');
+var column3 = document.querySelector('.column3');
 // var column2 = document.querySelector('.column2');
 var hatSection = document.querySelector('.hats-list');
 var clothesSection = document.querySelector('.clothes-list');
@@ -8,18 +9,21 @@ var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var garmentAppear = document.querySelectorAll('.garment');
 //next two variables allow us to use clearInputField function
-var saveOutfit = document.querySelector('.disable-save');
+var saveOutfitBtn = document.getElementById('saveOutfitBtn');
 var outFitInput = document.querySelector('.outfit-namer');
 var backgroundsArray = document.querySelectorAll('.backgrounds');
 var id = Date.now();
 var newOutfit = new Outfit(id);
 var bearContainer = document.querySelector('.bear-container');
+var savedOutfitsList = document.querySelector('.outfits-list');
+var closeSavedCard = document.querySelector('.close-btn');
 
 column1.addEventListener('click', addGarment);
-saveOutfit.addEventListener('click', clearInputField);
+// saveOutfitBtn.addEventListener('click', clearInputField);
 outFitInput.addEventListener('input', disableSaveButton);
 column1.addEventListener('click', placeBackground);
 saveOutfitBtn.addEventListener('click', saveOutfit);
+column3.addEventListener('click', removeSavedCard);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
@@ -106,25 +110,31 @@ function changeBackgroundImg() {
   }
 }
 
-clearInputField(saveOutfit);
-
 function clearInputField(saveOutfit) {
   outFitInput.value = "";
-  // dressBear();
-  // saveOutfit.classList.add('disable-save')
   disableSaveButton(event);
 }
 
 function disableSaveButton(event){
   if(outFitInput.value != "") {
-    console.log('yo');
-    saveOutfit.classList.remove('disable-save');
-  } else(saveOutfit.classList.add('disable-save'))
+    saveOutfitBtn.classList.remove('disable-save');
+    saveOutfitBtn.removeAttribute('disabled');
+  } else {
+    saveOutfitBtn.classList.add('disable-save')
+    saveOutfitBtn.setAttribute('disabled', '');
+  }
 }
-
 
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
-  var savedOutfitCard = `<button class="button-style">${outfitName}<img src="assets/close.svg" alt="Close"></button>`;
+  var savedOutfitCard = `<button class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
   savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
+
+  clearInputField(saveOutfit);
+}
+
+function removeSavedCard(event) {
+  if (event.target.classList.contains('close-btn')) {
+    event.target.closest('.button-style').remove();
+  }
 }
