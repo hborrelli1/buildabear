@@ -25,6 +25,7 @@ outFitInput.addEventListener('input', disableSaveButton);
 column1.addEventListener('click', placeBackground);
 saveOutfitBtn.addEventListener('click', saveOutfit);
 column3.addEventListener('click', removeSavedCard);
+window.addEventListener('load', getOutfitCards);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
@@ -138,9 +139,7 @@ function saveOutfit() {
   clearInputField(saveOutfit);
 }
 
-window.addEventListener('load', getOutfits);
-
-function getOutfits(){
+function getOutfitCards(){
   for (var i = 0; i < localStorage.length; i++){
     savedOutfitsList.insertAdjacentHTML('beforeend', (localStorage.getItem(localStorage.key(i))));
   }
