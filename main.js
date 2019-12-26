@@ -130,19 +130,21 @@ function disableSaveButton(event){
   }
 }
 
-// window.localStorage.setItem('savedOutfits', JSON.stringify(savedOutfitsArray));
-
-var savedOutfitsArray = [];
-
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
   var savedOutfitCard = `<button class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
   savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
-  savedOutfitsArray.push(outfitName);
-  window.localStorage.setItem('savedOutfitsStorage', JSON.stringify(savedOutfitsArray));
+  window.localStorage.setItem(outfitName, savedOutfitCard);
   clearInputField(saveOutfit);
 }
 
+window.addEventListener('load', getOutfits);
+
+function getOutfits(){
+  for (var i = 0; i < localStorage.length; i++){
+    savedOutfitsList.insertAdjacentHTML('beforeend', (localStorage.getItem(localStorage.key(i))));
+  }
+}
 
 function removeSavedCard(event) {
   if (event.target.classList.contains('close-btn')) {
