@@ -7,6 +7,7 @@ var clothesSection = document.querySelector('.clothes-list');
 var accessoriesSection = document.querySelector('.accessories-list');
 var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
+var allBtns = document.querySelectorAll('.button-style')
 var garmentAppear = document.querySelectorAll('.garment');
 //next two variables allow us to use clearInputField function
 var saveOutfitBtn = document.getElementById('saveOutfitBtn');
@@ -113,6 +114,10 @@ function changeBackgroundImg() {
 function clearInputField(saveOutfit) {
   outFitInput.value = "";
   disableSaveButton(event);
+  nakedBear(saveOutfit);
+  buttonReset(saveOutfit);
+  bearContainer.style.backgroundImage = "";
+  bearContainer.style.backgroundColor = "";
 }
 
 function disableSaveButton(event){
@@ -136,5 +141,24 @@ function saveOutfit() {
 function removeSavedCard(event) {
   if (event.target.classList.contains('close-btn')) {
     event.target.closest('.button-style').remove();
+  }
+}
+
+
+//the two functions below reset the clothes buttons, and make the bear
+//naked again. i created a new var allBtns @ 10.
+function nakedBear(event) {
+  for(var i = 0; i < garmentAppear.length; i++) {
+    if(garmentAppear[i].classList.contains('active-img')){
+    garmentAppear[i].classList.remove('active-img');
+    }
+  }
+}
+
+function buttonReset(event) {
+  for (var i = 0; i < allBtns.length; i++) {
+      if(allBtns[i].classList.contains('active')){
+        allBtns[i].classList.remove('active')
+    }
   }
 }
