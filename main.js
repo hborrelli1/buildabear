@@ -116,6 +116,8 @@ function clearInputField(saveOutfit) {
   disableSaveButton(event);
   nakedBear(saveOutfit);
   buttonReset(saveOutfit);
+  bearContainer.style.backgroundImage = "";
+  bearContainer.style.backgroundColor = "";
 }
 
 function disableSaveButton(event){
