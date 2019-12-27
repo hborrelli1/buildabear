@@ -25,6 +25,7 @@ outFitInput.addEventListener('input', disableSaveButton);
 column1.addEventListener('click', placeBackground);
 saveOutfitBtn.addEventListener('click', saveOutfit);
 column3.addEventListener('click', removeSavedCard);
+window.addEventListener('load', getOutfitCards);
 
 function addGarment(event) {
   toggleGarments('hat', 0);
@@ -134,8 +135,14 @@ function saveOutfit() {
   var outfitName = saveOutfitInput.value;
   var savedOutfitCard = `<button class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
   savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
-
+  window.localStorage.setItem(outfitName, savedOutfitCard);
   clearInputField(saveOutfit);
+}
+
+function getOutfitCards(){
+  for (var i = 0; i < localStorage.length; i++){
+    savedOutfitsList.insertAdjacentHTML('beforeend', (localStorage.getItem(localStorage.key(i))));
+  }
 }
 
 function removeSavedCard(event) {
