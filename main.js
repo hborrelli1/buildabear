@@ -134,9 +134,12 @@ function disableSaveButton(event){
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
   var savedOutfitCard = `<button class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+  newOutfit.title = outfitName;
   savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
   window.localStorage.setItem(outfitName, savedOutfitCard);
+  outfits.push(newOutfit);
   clearInputField(saveOutfit);
+  resetDataModel();
 }
 
 function getOutfitCards(){
@@ -150,7 +153,6 @@ function removeSavedCard(event) {
     event.target.closest('.button-style').remove();
   }
 }
-
 
 //the two functions below reset the clothes buttons, and make the bear
 //naked again. i created a new var allBtns @ 10.
@@ -168,4 +170,8 @@ function buttonReset(event) {
         allBtns[i].classList.remove('active')
     }
   }
+}
+
+function resetDataModel() {
+  newOutfit = new Outfit(Date.now());
 }
