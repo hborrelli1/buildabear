@@ -24,7 +24,11 @@ column1.addEventListener('click', addGarment);
 outFitInput.addEventListener('input', disableSaveButton);
 column1.addEventListener('click', placeBackground);
 saveOutfitBtn.addEventListener('click', saveOutfit);
-column3.addEventListener('click', removeSavedCard);
+column3.addEventListener('click', function() {
+  removeSavedCard(event)
+  removeCardFromLocalStorage(event);
+});
+
 window.addEventListener('load', getOutfitCards);
 
 function addGarment(event) {
@@ -133,10 +137,11 @@ function disableSaveButton(event){
 
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
-  var savedOutfitCard = `<button class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+  var outfitId = newOutfit.id;
+  var savedOutfitCard = `<button class="button-style">${outfitName}<img id="${outfitId}" class="close-btn" src="assets/close.svg" alt="Close"></button>`;
   newOutfit.title = outfitName;
   savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
-  window.localStorage.setItem(outfitName, savedOutfitCard);
+  window.localStorage.setItem(outfitId, JSON.stringify(newOutfit));
   outfits.push(newOutfit);
   clearInputField(saveOutfit);
   resetDataModel();
@@ -144,7 +149,9 @@ function saveOutfit() {
 
 function getOutfitCards(){
   for (var i = 0; i < localStorage.length; i++){
-    savedOutfitsList.insertAdjacentHTML('beforeend', (localStorage.getItem(localStorage.key(i))));
+    var currentOutfit = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    var outfitButton = `<button class="button-style">${currentOutfit.title}<img id="${currentOutfit.id}" class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+    savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
   }
 }
 
@@ -174,4 +181,10 @@ function buttonReset(event) {
 
 function resetDataModel() {
   newOutfit = new Outfit(Date.now());
+}
+
+function removeCardFromLocalStorage() {
+  if (event.target.classList.contains('close-btn')) {
+    localStorage.removeItem(event.target.id);
+  }
 }
