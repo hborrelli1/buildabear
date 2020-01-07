@@ -147,17 +147,9 @@ function saveOutfit() {
 }
 
 function getOutfitCards(){
-  window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
-
-  var x = JSON.parse(window.localStorage.getItem('outfitTitles'));
-  if (x.length > 0) {
-    outfits = x;
-    // outfits = JSON.parse(localStorage.getItem('outfitTitles'));
-  } else {
-    outfits = [];
-  }
-  for (var i = 0; i < outfits.length; i++){
-    var outfitButton = `<button id="${outfits[i]}" class="button-style">${outfits[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+  var outfitTitlesParsed = JSON.parse(window.localStorage.getItem('outfitTitles'));
+  for (var i = 0; i < outfitTitlesParsed.length; i++){
+    var outfitButton = `<button id="${outfitTitlesParsed[i]}" class="button-style">${outfitTitlesParsed[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
     savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
   }
 }
@@ -203,7 +195,8 @@ function addGarmentsFromSave(event){
     clearInputField(event);
     resetDataModel(event);
     var clickedOutfit = event.target.id;
-    currentOutfit = JSON.parse(window.localStorage.getItem(clickedOutfit));
+    var sourceOutfit = JSON.parse(window.localStorage.getItem(clickedOutfit));
+    currentOutfit = Object.assign(currentOutfit, sourceOutfit);
     updateDom();
   }
 }
