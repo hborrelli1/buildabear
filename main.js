@@ -14,7 +14,7 @@ var saveOutfitBtn = document.getElementById('saveOutfitBtn');
 var outFitInput = document.querySelector('.outfit-namer');
 var backgroundsArray = document.querySelectorAll('.backgrounds');
 var id = Date.now();
-var newOutfit = new Outfit(id);
+var currentOutfit = new Outfit(id);
 var bearContainer = document.querySelector('.bear-container');
 var savedOutfitsList = document.querySelector('.outfits-list');
 var closeSavedCard = document.querySelector('.close-btn');
@@ -59,10 +59,10 @@ function toggleActiveClass() {
 }
 
 function placeGarment(i) {
-  if (newOutfit.garments[i] === event.target.id) {
-    newOutfit.removeGarment(i, null);
+  if (currentOutfit.garments[i] === event.target.id) {
+    currentOutfit.removeGarment(i, null);
   } else {
-    newOutfit.addGarment(i, event.target.id);
+    currentOutfit.addGarment(i, event.target.id);
   }
 }
 
@@ -85,10 +85,10 @@ function placeBackground(background) {
 }
 
 function changeBackgroundData(background) {
-if (newOutfit.background === event.target.id) {
-  newOutfit.changeBackground(null)
+if (currentOutfit.background === event.target.id) {
+  currentOutfit.changeBackground(null)
 } else {
-  newOutfit.changeBackground(event.target.id)
+  currentOutfit.changeBackground(event.target.id)
   }
 }
 
@@ -137,12 +137,12 @@ function disableSaveButton(event){
 
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
-  var outfitId = newOutfit.id;
-  var savedOutfitCard = `<button class="button-style">${outfitName}<img id="${outfitId}" class="close-btn" src="assets/close.svg" alt="Close"></button>`;
-  newOutfit.title = outfitName;
+  var outfitId = currentOutfit.id;
+  var savedOutfitCard = `<button id="${outfitId}" class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+  currentOutfit.title = outfitName;
   savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
-  window.localStorage.setItem(outfitId, JSON.stringify(newOutfit));
-  outfits.push(newOutfit);
+  window.localStorage.setItem(outfitId, JSON.stringify(currentOutfit));
+  outfits.push(currentOutfit);
   clearInputField(saveOutfit);
   resetDataModel();
 }
@@ -150,7 +150,7 @@ function saveOutfit() {
 function getOutfitCards(){
   for (var i = 0; i < localStorage.length; i++){
     var currentOutfit = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    var outfitButton = `<button class="button-style">${currentOutfit.title}<img id="${currentOutfit.id}" class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+    var outfitButton = `<button id="${currentOutfit.id}" class="button-style">${currentOutfit.title}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
     savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
   }
 }
@@ -180,11 +180,11 @@ function buttonReset(event) {
 }
 
 function resetDataModel() {
-  newOutfit = new Outfit(Date.now());
+  currentOutfit = new Outfit(Date.now());
 }
 
 function removeCardFromLocalStorage() {
   if (event.target.classList.contains('close-btn')) {
-    localStorage.removeItem(event.target.id);
+    localStorage.removeItem(event.target.parentNode.id);
   }
 }
