@@ -147,19 +147,28 @@ function saveOutfit() {
 }
 
 function getOutfitCards(){
-  if (outfits.length > 0) {
-    outfits = JSON.parse(localStorage.getItem('outfitTitles'));
-    for (var i = 0; i < outfits.length; i++){
-      var outfitButton = `<button id="${outfits[i]}" class="button-style">${outfits[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
-      savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
-    }
+  window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
+
+  var x = JSON.parse(window.localStorage.getItem('outfitTitles'));
+  if (x.length > 0) {
+    outfits = x;
+    // outfits = JSON.parse(localStorage.getItem('outfitTitles'));
+  } else {
+    outfits = [];
+  }
+  for (var i = 0; i < outfits.length; i++){
+    var outfitButton = `<button id="${outfits[i]}" class="button-style">${outfits[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+    savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
   }
 }
 
 function removeSavedCard(event) {
   if (event.target.classList.contains('close-btn')) {
     event.target.closest('.button-style').remove();
-    outfits.splice(outfits.indexOf(event.target.id), 1);
+    var garmentIndex = outfits.indexOf(event.target.id);
+    // console.log(garmentIndex);
+    outfits.splice(garmentIndex, 1);
+    // console.log(outfits.findIndex('sddd'));
     window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
   }
 }
@@ -203,12 +212,14 @@ function addGarmentsFromSave(event){
 function updateDom(){
   outFitInput.value = currentOutfit.title;
   for(var i = 0; i < currentOutfit.garments.length; i++){
-    var allBtnsArr = Array.prototype.slice.call(allBtns);
-    var garmentBtn = allBtnsArr.find(btn => btn.id === currentOutfit.garments[i]);
-    garmentBtn.classList.add('active');
-    var garmentsArr = Array.prototype.slice.call(garmentAppear);
-    var garmentImg = garmentsArr.find(img => img.classList.contains(currentOutfit.garments[i]));
-    garmentImg.classList.add('active-img')
+    if (currentOutfit.garments[i] != null) {
+      var allBtnsArr = Array.prototype.slice.call(allBtns);
+      var garmentBtn = allBtnsArr.find(btn => btn.id === currentOutfit.garments[i]);
+      garmentBtn.classList.add('active');
+      var garmentsArr = Array.prototype.slice.call(garmentAppear);
+      var garmentImg = garmentsArr.find(img => img.classList.contains(currentOutfit.garments[i]));
+      garmentImg.classList.add('active-img')
+    }
   }
   //set title of outfit to inputfield
 //for all 3 garments find corresponding button and add active class
