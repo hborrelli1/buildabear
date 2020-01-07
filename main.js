@@ -189,12 +189,10 @@ function removeCardFromLocalStorage() {
 }
 
 function addGarmentsFromSave(event){
-//   clearInputField(event);
-//   resetDataModel(event);
-  // for(var i = 0, i < outfits.length; i++){
-//     if(outfits[i].title === closeSavedCard.text.value){
-//
-//     }
-//   }
-//   console.log('hey');
-// }
+  if(event.target.classList.contains('button-style')){
+    clearInputField(event);
+    resetDataModel(event);
+    var clickedOutfit = event.target.id;
+    currentOutfit = JSON.parse(window.localStorage.getItem(clickedOutfit));
+    }
+}
