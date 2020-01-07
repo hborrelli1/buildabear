@@ -27,7 +27,7 @@ saveOutfitBtn.addEventListener('click', saveOutfit);
 column3.addEventListener('click', function() {
   removeSavedCard(event)
   removeCardFromLocalStorage(event);
-  addGarmentsFromSave(event);
+  // addGarmentsFromSave(event);
 });
 
 window.addEventListener('load', getOutfitCards);
@@ -138,20 +138,21 @@ function disableSaveButton(event){
 
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
-  var outfitId = currentOutfit.id;
-  var savedOutfitCard = `<button id="${outfitId}" class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+  // var outfitId = currentOutfit.id;
+  var savedOutfitCard = `<button id="${outfitName}" class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
   currentOutfit.title = outfitName;
   savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
-  window.localStorage.setItem(outfitId, JSON.stringify(currentOutfit));
-  outfits.push(currentOutfit);
+  outfits.push(currentOutfit.title);
+  window.localStorage.setItem(outfitName, JSON.stringify(currentOutfit));
+  window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
   clearInputField(saveOutfit);
   resetDataModel();
 }
 
 function getOutfitCards(){
-  for (var i = 0; i < localStorage.length; i++){
-    var currentOutfit = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    var outfitButton = `<button id="${currentOutfit.id}" class="button-style">${currentOutfit.title}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+  outfits = JSON.parse(localStorage.getItem('outfitTitles'));
+  for (var i = 0; i < outfits.length; i++){
+    var outfitButton = `<button id="${outfits[i]}" class="button-style">${outfits[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
     savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
   }
 }
@@ -159,6 +160,8 @@ function getOutfitCards(){
 function removeSavedCard(event) {
   if (event.target.classList.contains('close-btn')) {
     event.target.closest('.button-style').remove();
+    outfits.splice(outfits.indexOf(event.target.id), 1);
+    window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
   }
 }
 
@@ -190,13 +193,13 @@ function removeCardFromLocalStorage() {
   }
 }
 
-function addGarmentsFromSave(event){
-  clearInputField(event);
-  resetDataModel(event);
-  for(var i = 0, i < outfits.length; i++){
-    if(outfits[i].title === closeSavedCard.text.value){
-      
-    }
-  }
-  console.log('hey');
-}
+// function addGarmentsFromSave(event){
+//   clearInputField(event);
+//   resetDataModel(event);
+  // for(var i = 0, i < outfits.length; i++){
+//     if(outfits[i].title === closeSavedCard.text.value){
+//
+//     }
+//   }
+//   console.log('hey');
+// }
