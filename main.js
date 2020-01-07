@@ -27,6 +27,7 @@ saveOutfitBtn.addEventListener('click', saveOutfit);
 column3.addEventListener('click', function() {
   removeSavedCard(event)
   removeCardFromLocalStorage(event);
+  addGarmentsFromSave(event);
 });
 
 window.addEventListener('load', getOutfitCards);
@@ -187,4 +188,11 @@ function removeCardFromLocalStorage() {
   if (event.target.classList.contains('close-btn')) {
     localStorage.removeItem(event.target.parentNode.id);
   }
+}
+
+function addGarmentsFromSave(event){
+  clearInputField(event);
+  resetDataModel(event);
+  
+  console.log('hey');
 }
