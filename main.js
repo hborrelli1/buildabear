@@ -20,14 +20,13 @@ var savedOutfitsList = document.querySelector('.outfits-list');
 var closeSavedCard = document.querySelector('.close-btn');
 
 column1.addEventListener('click', addGarment);
-// saveOutfitBtn.addEventListener('click', clearInputField);
 outFitInput.addEventListener('input', disableSaveButton);
 column1.addEventListener('click', placeBackground);
 saveOutfitBtn.addEventListener('click', saveOutfit);
 column3.addEventListener('click', function() {
   removeSavedCard(event)
   removeCardFromLocalStorage(event);
-  // addGarmentsFromSave(event);
+  addGarmentsFromSave(event);
 });
 
 window.addEventListener('load', getOutfitCards);
@@ -36,7 +35,6 @@ function addGarment(event) {
   toggleGarments('hat', 0);
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
-  // toggleGarments('backgrounds');
 }
 
 function toggleGarments(category, index) {
@@ -138,7 +136,6 @@ function disableSaveButton(event){
 
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
-  // var outfitId = currentOutfit.id;
   var savedOutfitCard = `<button id="${outfitName}" class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
   currentOutfit.title = outfitName;
   savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
@@ -165,8 +162,6 @@ function removeSavedCard(event) {
   }
 }
 
-//the two functions below reset the clothes buttons, and make the bear
-//naked again. i created a new var allBtns @ 10.
 function nakedBear(event) {
   for(var i = 0; i < garmentAppear.length; i++) {
     if(garmentAppear[i].classList.contains('active-img')){
@@ -193,7 +188,7 @@ function removeCardFromLocalStorage() {
   }
 }
 
-// function addGarmentsFromSave(event){
+function addGarmentsFromSave(event){
 //   clearInputField(event);
 //   resetDataModel(event);
   // for(var i = 0, i < outfits.length; i++){
