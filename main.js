@@ -193,6 +193,10 @@ function removeCardFromLocalStorage() {
 function addGarmentsFromSave(event){
   clearInputField(event);
   resetDataModel(event);
-  
+  for(var i = 0, i < outfits.length; i++){
+    if(outfits[i].title === closeSavedCard.text.value){
+      
+    }
+  }
   console.log('hey');
 }
