@@ -147,10 +147,12 @@ function saveOutfit() {
 }
 
 function getOutfitCards(){
-  outfits = JSON.parse(localStorage.getItem('outfitTitles'));
-  for (var i = 0; i < outfits.length; i++){
-    var outfitButton = `<button id="${outfits[i]}" class="button-style">${outfits[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
-    savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
+  if (outfits.length > 0) {
+    outfits = JSON.parse(localStorage.getItem('outfitTitles'));
+    for (var i = 0; i < outfits.length; i++){
+      var outfitButton = `<button id="${outfits[i]}" class="button-style">${outfits[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+      savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
+    }
   }
 }
 
@@ -206,7 +208,7 @@ function updateDom(){
     garmentBtn.classList.add('active');
     var garmentsArr = Array.prototype.slice.call(garmentAppear);
     var garmentImg = garmentsArr.find(img => img.classList.contains(currentOutfit.garments[i]));
-    garmentImg.classList.add('active-img');
+    garmentImg.classList.add('active-img')
   }
   //set title of outfit to inputfield
 //for all 3 garments find corresponding button and add active class
