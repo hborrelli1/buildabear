@@ -165,10 +165,9 @@ function getOutfitCards(){
 function removeSavedCard(event) {
   if (event.target.classList.contains('close-btn')) {
     event.target.closest('.button-style').remove();
-    var garmentIndex = outfits.indexOf(event.target.id);
-    // console.log(garmentIndex);
-    outfits.splice(garmentIndex, 1);
-    // console.log(outfits.findIndex('sddd'));
+    var garmentIndex = event.target.parentNode.id;
+    console.log(garmentIndex);
+    outfits.splice(outfits.indexOf(garmentIndex), 1);
     window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
   }
 }
