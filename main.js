@@ -194,5 +194,21 @@ function addGarmentsFromSave(event){
     resetDataModel(event);
     var clickedOutfit = event.target.id;
     currentOutfit = JSON.parse(window.localStorage.getItem(clickedOutfit));
-    }
+    updateDom();
+  }
+}
+
+function updateDom(){
+  outFitInput.value = currentOutfit.title;
+  for(var i = 0; i < currentOutfit.garments.length; i++){
+    var allBtnsArr = Array.prototype.slice.call(allBtns);
+    var garmentBtn = allBtnsArr.find(btn => btn.id === currentOutfit.garments[i]);
+    garmentBtn.classList.add('active');
+    var garmentsArr = Array.prototype.slice.call(garmentAppear);
+    var garmentImg = garmentsArr.find(img => img.classList.contains(currentOutfit.garments[i]));
+    garmentImg.classList.add('active-img');
+  }
+  //set title of outfit to inputfield
+//for all 3 garments find corresponding button and add active class
+//add active image class to images from outfit
 }
