@@ -91,24 +91,46 @@ function changeBackgroundData(background) {
   }
 }
 
-
 function changeBackgroundImg() {
   for (var i = 0; i < backgroundsArray.length; i++) {
     if (event.target.classList.contains('active')) {
       bearContainer.style.backgroundImage = "";
       bearContainer.style.backgroundColor = "";
     } else if (event.target.id === 'beach-background') {
-      bearContainer.style.backgroundImage = "url(assets/beach.png)"
+      bearContainer.style.backgroundImage = "url(assets/beach.png)";
     } else if (event.target.id === 'park-background') {
-      bearContainer.style.backgroundImage = "url(assets/park.png)"
+      bearContainer.style.backgroundImage = "url(assets/park.png)";
     } else if (event.target.id === 'space-background') {
-      bearContainer.style.backgroundImage = "url(assets/outerspace.png)"
+      bearContainer.style.backgroundImage = "url(assets/outerspace.png)";
     } else if (event.target.id === 'hearts-background') {
-      bearContainer.style.backgroundImage ="url(assets/hearts.png)"
+      bearContainer.style.backgroundImage ="url(assets/hearts.png)";
     } else if (event.target.id === 'blue-background') {
       bearContainer.style.backgroundImage = "";
       bearContainer.style.backgroundColor = "#1794A0";
     } else if (event.target.id === 'yellow-background') {
+      bearContainer.style.backgroundImage = "";
+      bearContainer.style.backgroundColor = "#E2B76B";
+    }
+  }
+}
+
+function updateBgFromSavedCard() {
+  for (var i = 0; i < backgroundsArray.length; i++) {
+    if (currentOutfit.background === "") {
+      bearContainer.style.backgroundImage = "";
+      bearContainer.style.backgroundColor = "";
+    } else if (currentOutfit.background === 'beach-background') {
+      bearContainer.style.backgroundImage = "url(assets/beach.png)";
+    } else if (currentOutfit.background === 'park-background') {
+      bearContainer.style.backgroundImage = "url(assets/park.png)";
+    } else if (currentOutfit.background === 'space-background') {
+      bearContainer.style.backgroundImage = "url(assets/outerspace.png)";
+    } else if (currentOutfit.background === 'hearts-background') {
+      bearContainer.style.backgroundImage ="url(assets/hearts.png)";
+    } else if (currentOutfit.background === 'blue-background') {
+      bearContainer.style.backgroundImage = "";
+      bearContainer.style.backgroundColor = "#1794A0";
+    } else if (currentOutfit.background === 'yellow-background') {
       bearContainer.style.backgroundImage = "";
       bearContainer.style.backgroundColor = "#E2B76B";
     }
@@ -204,6 +226,7 @@ function addGarmentsFromSave(event) {
     currentOutfit = Object.assign(currentOutfit, sourceOutfit);
     updateDom();
     disableSaveButton();
+    updateBgFromSavedCard();
   }
 }
 
@@ -219,6 +242,8 @@ function updateDom(){
       garmentImg.classList.add('active-img');
     }
   }
+  var bgBtn = allBtnsArr.find(btn => btn.id === currentOutfit.background);
+  bgBtn.classList.add('active');
 }
 
 function resetBear(){
