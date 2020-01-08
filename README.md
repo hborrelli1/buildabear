@@ -1,9 +1,19 @@
 # buildabear
+Overview of project and goals
+Overview of technologies used, challenges, and wins, any other reflections
+Screenshots of comp and your app
+### Project: 1911 Mod 1 Group Project
 
-Project: 1911 Mod 1 Group Project
+#### Contributors:
+[Jeremiah Black](https://github.com/jeremiahblackol)
+[Cristina Peña](https://github.com/CLPena)
+[Harry Borrelli](https://github.com/hborrelli1)
 
-Group Member Names: Jeremiah, Cristina, Harry
+#### Project Overview:
+[Link to GitHub Pages](https://hborrelli1.github.io/buildabear/)
 
+
+#### DTR
 Goals and Expectations for the Project (What does each group member hope to get out of this project? What do we want to achieve as a team? How will we know that we're successful? YES, you can still fully answer this question without knowing exactly what you're going to build.):  
 - Work time defaults to collaboration and project time. Communicate if you cannot make that work.
 
