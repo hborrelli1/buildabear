@@ -148,11 +148,11 @@ function saveOutfit() {
 
 function getOutfitCards(){
   if (window.localStorage.getItem('outfitTitles') === null) {
-    var outfitTitlesParsed = [];
+    outfits = [];
   } else {
-    var outfitTitlesParsed = JSON.parse(window.localStorage.getItem('outfitTitles'));
-    for (var i = 0; i < outfitTitlesParsed.length; i++) {
-      var outfitButton = `<button id="${outfitTitlesParsed[i]}" class="button-style">${outfitTitlesParsed[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+    outfits = JSON.parse(window.localStorage.getItem('outfitTitles'));
+    for (var i = 0; i < outfits.length; i++) {
+      var outfitButton = `<button id="${outfits[i]}" class="button-style">${outfits[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
       savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
     }
   }
