@@ -28,6 +28,7 @@ h1 {
 h3 {
   font-size: 2.6em;
   margin-bottom: 15px;
+  margin-top: 4%;
 }
 
 main {
@@ -110,7 +111,7 @@ main {
 }
 
 .bear-container {
-  margin-top: 2.1em;
+  margin-top: .8em;
   position: relative;
   width: 550px;
 }
@@ -137,12 +138,12 @@ main {
 }
 
 .save-outfit input {
-  display: block;
+  display: inline-block;
   font-size: 1.3em;
-  height: 30px;
-  margin: .5em auto .5em;
-  padding: 5px;
-  width: 75%;
+  height: 38px;
+  margin: 13px .5em;
+  padding: 13px;
+  width: 40%;
 }
 
 /* Outfits Column */
