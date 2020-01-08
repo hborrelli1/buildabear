@@ -16,11 +16,13 @@ var currentOutfit = new Outfit(id);
 var bearContainer = document.querySelector('.bear-container');
 var savedOutfitsList = document.querySelector('.outfits-list');
 var closeSavedCard = document.querySelector('.close-btn');
+var resetBtn = document.querySelector('#reset');
 
 column1.addEventListener('click', addGarment);
 outFitInput.addEventListener('input', disableSaveButton);
 column1.addEventListener('click', placeBackground);
 saveOutfitBtn.addEventListener('click', saveOutfit);
+resetBtn.addEventListener('click', resetBear);
 column3.addEventListener('click', function() {
   removeSavedCard(event)
   removeCardFromLocalStorage(event);
@@ -217,4 +219,9 @@ function updateDom(){
       garmentImg.classList.add('active-img');
     }
   }
+}
+
+function resetBear(){
+  clearInputField(saveOutfit);
+  resetDataModel();
 }
