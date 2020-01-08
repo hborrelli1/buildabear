@@ -20,13 +20,13 @@ var savedOutfitsList = document.querySelector('.outfits-list');
 var closeSavedCard = document.querySelector('.close-btn');
 
 column1.addEventListener('click', addGarment);
-// saveOutfitBtn.addEventListener('click', clearInputField);
 outFitInput.addEventListener('input', disableSaveButton);
 column1.addEventListener('click', placeBackground);
 saveOutfitBtn.addEventListener('click', saveOutfit);
 column3.addEventListener('click', function() {
   removeSavedCard(event)
   removeCardFromLocalStorage(event);
+  addGarmentsFromSave(event);
 });
 
 window.addEventListener('load', getOutfitCards);
@@ -35,7 +35,6 @@ function addGarment(event) {
   toggleGarments('hat', 0);
   toggleGarments('clothes', 1);
   toggleGarments('accessories', 2);
-  // toggleGarments('backgrounds');
 }
 
 function toggleGarments(category, index) {
@@ -137,32 +136,41 @@ function disableSaveButton(event){
 
 function saveOutfit() {
   var outfitName = saveOutfitInput.value;
-  var outfitId = currentOutfit.id;
-  var savedOutfitCard = `<button id="${outfitId}" class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+  var savedOutfitCard = `<button id="${outfitName}" class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
   currentOutfit.title = outfitName;
-  savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
-  window.localStorage.setItem(outfitId, JSON.stringify(currentOutfit));
-  outfits.push(currentOutfit);
+  if (!outfits.includes(outfitName)) {
+    savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
+    outfits.push(currentOutfit.title);
+  }
+  window.localStorage.setItem(outfitName, JSON.stringify(currentOutfit));
+  window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
   clearInputField(saveOutfit);
   resetDataModel();
 }
 
 function getOutfitCards(){
-  for (var i = 0; i < localStorage.length; i++){
-    var currentOutfit = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    var outfitButton = `<button id="${currentOutfit.id}" class="button-style">${currentOutfit.title}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
-    savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
+  if (window.localStorage.getItem('outfitTitles') === null) {
+    var outfitTitlesParsed = [];
+  } else {
+    var outfitTitlesParsed = JSON.parse(window.localStorage.getItem('outfitTitles'));
+    console.log(outfitTitlesParsed.length);
+    for (var i = 0; i < outfitTitlesParsed.length; i++){
+      var outfitButton = `<button id="${outfitTitlesParsed[i]}" class="button-style">${outfitTitlesParsed[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+      savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
+    }
   }
 }
 
 function removeSavedCard(event) {
   if (event.target.classList.contains('close-btn')) {
     event.target.closest('.button-style').remove();
+    var garmentIndex = event.target.parentNode.id;
+    console.log(garmentIndex);
+    outfits.splice(outfits.indexOf(garmentIndex), 1);
+    window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
   }
 }
 
-//the two functions below reset the clothes buttons, and make the bear
-//naked again. i created a new var allBtns @ 10.
 function nakedBear(event) {
   for(var i = 0; i < garmentAppear.length; i++) {
     if(garmentAppear[i].classList.contains('active-img')){
@@ -187,4 +195,33 @@ function removeCardFromLocalStorage() {
   if (event.target.classList.contains('close-btn')) {
     localStorage.removeItem(event.target.parentNode.id);
   }
+}
+
+function addGarmentsFromSave(event){
+  if(event.target.classList.contains('button-style')){
+    clearInputField(event);
+    resetDataModel(event);
+    var clickedOutfit = event.target.id;
+    var sourceOutfit = JSON.parse(window.localStorage.getItem(clickedOutfit));
+    currentOutfit = Object.assign(currentOutfit, sourceOutfit);
+    updateDom();
+    disableSaveButton();
+  }
+}
+
+function updateDom(){
+  outFitInput.value = currentOutfit.title;
+  for(var i = 0; i < currentOutfit.garments.length; i++){
+    if (currentOutfit.garments[i] != null) {
+      var allBtnsArr = Array.prototype.slice.call(allBtns);
+      var garmentBtn = allBtnsArr.find(btn => btn.id === currentOutfit.garments[i]);
+      garmentBtn.classList.add('active');
+      var garmentsArr = Array.prototype.slice.call(garmentAppear);
+      var garmentImg = garmentsArr.find(img => img.classList.contains(currentOutfit.garments[i]));
+      garmentImg.classList.add('active-img')
+    }
+  }
+  //set title of outfit to inputfield
+//for all 3 garments find corresponding button and add active class
+//add active image class to images from outfit
 }
