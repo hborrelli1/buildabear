@@ -160,14 +160,18 @@ function saveOutfit() {
   var outfitName = saveOutfitInput.value;
   var savedOutfitCard = `<button id="${outfitName}" class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
   currentOutfit.title = outfitName;
-  if (!outfits.includes(outfitName)) {
-    savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
-    outfits.push(currentOutfit.title);
-  }
+  createOutfitBtn(outfitName, savedOutfitCard);
   window.localStorage.setItem(outfitName, JSON.stringify(currentOutfit));
   window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
   clearInputField(saveOutfit);
   resetDataModel();
+}
+
+function createOutfitBtn(outfitName, savedOutfitCard) {
+  if (!outfits.includes(outfitName)) {
+    savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
+    outfits.push(currentOutfit.title);
+  }
 }
 
 function getOutfitCards(){
@@ -221,27 +225,44 @@ function addGarmentsFromSave(event) {
   if (event.target.classList.contains('button-style')) {
     clearInputField(event);
     resetDataModel(event);
-    var clickedOutfit = event.target.id;
-    var sourceOutfit = JSON.parse(window.localStorage.getItem(clickedOutfit));
-    currentOutfit = Object.assign(currentOutfit, sourceOutfit);
+    grabOutfit(event);
     updateDom();
     disableSaveButton();
     updateBgFromSavedCard();
   }
 }
 
+function grabOutfit(event) {
+  var clickedOutfit = event.target.id;
+  var sourceOutfit = JSON.parse(window.localStorage.getItem(clickedOutfit));
+  currentOutfit = Object.assign(currentOutfit, sourceOutfit);
+}
+
 function updateDom(){
   outFitInput.value = currentOutfit.title;
   for (var i = 0; i < currentOutfit.garments.length; i++) {
     if (currentOutfit.garments[i] != null) {
-      var allBtnsArr = Array.prototype.slice.call(allBtns);
-      var garmentBtn = allBtnsArr.find(btn => btn.id === currentOutfit.garments[i]);
-      garmentBtn.classList.add('active');
-      var garmentsArr = Array.prototype.slice.call(garmentAppear);
-      var garmentImg = garmentsArr.find(img => img.classList.contains(currentOutfit.garments[i]));
-      garmentImg.classList.add('active-img');
+      populateGarmentsBtns(i);
+      populateGarmentsImgs(i);
     }
   }
+  populateGarmentsBg();
+}
+
+function populateGarmentsBtns(i) {
+  var allBtnsArr = Array.prototype.slice.call(allBtns);
+  var garmentBtn = allBtnsArr.find(btn => btn.id === currentOutfit.garments[i]);
+  garmentBtn.classList.add('active');
+}
+
+function populateGarmentsImgs(i) {
+  var garmentsArr = Array.prototype.slice.call(garmentAppear);
+  var garmentImg = garmentsArr.find(img => img.classList.contains(currentOutfit.garments[i]));
+  garmentImg.classList.add('active-img');
+}
+
+function populateGarmentsBg() {
+  var allBtnsArr = Array.prototype.slice.call(allBtns);
   var bgBtn = allBtnsArr.find(btn => btn.id === currentOutfit.background);
   bgBtn.classList.add('active');
 }
