@@ -1,7 +1,6 @@
 var outfits = [];
 var column1 = document.querySelector('.column1');
 var column3 = document.querySelector('.column3');
-// var column2 = document.querySelector('.column2');
 var hatSection = document.querySelector('.hats-list');
 var clothesSection = document.querySelector('.clothes-list');
 var accessoriesSection = document.querySelector('.accessories-list');
@@ -9,7 +8,6 @@ var backgroundsSection = document.querySelector('.backgrounds-list');
 var hatBtns = document.querySelectorAll('.hats-list .button-style');
 var allBtns = document.querySelectorAll('.button-style')
 var garmentAppear = document.querySelectorAll('.garment');
-//next two variables allow us to use clearInputField function
 var saveOutfitBtn = document.getElementById('saveOutfitBtn');
 var outFitInput = document.querySelector('.outfit-namer');
 var backgroundsArray = document.querySelectorAll('.backgrounds');
@@ -66,10 +64,10 @@ function placeGarment(i) {
 }
 
 function dressBear(event, category) {
-  for(var i = 0; i < garmentAppear.length; i++) {
-    if((garmentAppear[i].classList.contains('active-img')) && (garmentAppear[i].classList.contains(category))){
+  for (var i = 0; i < garmentAppear.length; i++) {
+    if ((garmentAppear[i].classList.contains('active-img')) && (garmentAppear[i].classList.contains(category))) {
       garmentAppear[i].classList.remove('active-img');
-    } else if(garmentAppear[i].classList.contains(event.target.id)){
+    } else if (garmentAppear[i].classList.contains(event.target.id)) {
       garmentAppear[i].classList.add('active-img');
     }
   }
@@ -84,33 +82,33 @@ function placeBackground(background) {
 }
 
 function changeBackgroundData(background) {
-if (currentOutfit.background === event.target.id) {
-  currentOutfit.changeBackground(null)
-} else {
-  currentOutfit.changeBackground(event.target.id)
+  if (currentOutfit.background === event.target.id) {
+    currentOutfit.changeBackground(null);
+  } else {
+    currentOutfit.changeBackground(event.target.id);
   }
 }
 
 
 function changeBackgroundImg() {
-  for(var i = 0; i < backgroundsArray.length; i++) {
-  if(event.target.classList.contains('active')){
-    bearContainer.style.backgroundImage = "";
-    bearContainer.style.backgroundColor = "";
-  } else if(event.target.id === 'beach-background'){
-    bearContainer.style.backgroundImage = "url(assets/beach.png)"
-  } else if(event.target.id === 'park-background'){
-    bearContainer.style.backgroundImage = "url(assets/park.png)"
-  } else if(event.target.id === 'space-background'){
-    bearContainer.style.backgroundImage = "url(assets/outerspace.png)"
-  } else if(event.target.id === 'hearts-background'){
-    bearContainer.style.backgroundImage ="url(assets/hearts.png)"
-  } else if(event.target.id === 'blue-background'){
-    bearContainer.style.backgroundImage = "";
-    bearContainer.style.backgroundColor = "#1794A0";
-  } else if(event.target.id === 'yellow-background'){
-    bearContainer.style.backgroundImage = "";
-    bearContainer.style.backgroundColor = "#E2B76B";
+  for (var i = 0; i < backgroundsArray.length; i++) {
+    if (event.target.classList.contains('active')) {
+      bearContainer.style.backgroundImage = "";
+      bearContainer.style.backgroundColor = "";
+    } else if (event.target.id === 'beach-background') {
+      bearContainer.style.backgroundImage = "url(assets/beach.png)"
+    } else if (event.target.id === 'park-background') {
+      bearContainer.style.backgroundImage = "url(assets/park.png)"
+    } else if (event.target.id === 'space-background') {
+      bearContainer.style.backgroundImage = "url(assets/outerspace.png)"
+    } else if (event.target.id === 'hearts-background') {
+      bearContainer.style.backgroundImage ="url(assets/hearts.png)"
+    } else if (event.target.id === 'blue-background') {
+      bearContainer.style.backgroundImage = "";
+      bearContainer.style.backgroundColor = "#1794A0";
+    } else if (event.target.id === 'yellow-background') {
+      bearContainer.style.backgroundImage = "";
+      bearContainer.style.backgroundColor = "#E2B76B";
     }
   }
 }
@@ -124,8 +122,8 @@ function clearInputField(saveOutfit) {
   bearContainer.style.backgroundColor = "";
 }
 
-function disableSaveButton(event){
-  if(outFitInput.value != "") {
+function disableSaveButton(event) {
+  if (outFitInput.value != "") {
     saveOutfitBtn.classList.remove('disable-save');
     saveOutfitBtn.removeAttribute('disabled');
   } else {
@@ -153,8 +151,7 @@ function getOutfitCards(){
     var outfitTitlesParsed = [];
   } else {
     var outfitTitlesParsed = JSON.parse(window.localStorage.getItem('outfitTitles'));
-    console.log(outfitTitlesParsed.length);
-    for (var i = 0; i < outfitTitlesParsed.length; i++){
+    for (var i = 0; i < outfitTitlesParsed.length; i++) {
       var outfitButton = `<button id="${outfitTitlesParsed[i]}" class="button-style">${outfitTitlesParsed[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
       savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
     }
@@ -165,24 +162,23 @@ function removeSavedCard(event) {
   if (event.target.classList.contains('close-btn')) {
     event.target.closest('.button-style').remove();
     var garmentIndex = event.target.parentNode.id;
-    console.log(garmentIndex);
     outfits.splice(outfits.indexOf(garmentIndex), 1);
     window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
   }
 }
 
 function nakedBear(event) {
-  for(var i = 0; i < garmentAppear.length; i++) {
-    if(garmentAppear[i].classList.contains('active-img')){
-    garmentAppear[i].classList.remove('active-img');
+  for (var i = 0; i < garmentAppear.length; i++) {
+    if (garmentAppear[i].classList.contains('active-img')) {
+      garmentAppear[i].classList.remove('active-img');
     }
   }
 }
 
 function buttonReset(event) {
   for (var i = 0; i < allBtns.length; i++) {
-      if(allBtns[i].classList.contains('active')){
-        allBtns[i].classList.remove('active')
+    if (allBtns[i].classList.contains('active')) {
+      allBtns[i].classList.remove('active');
     }
   }
 }
@@ -197,8 +193,8 @@ function removeCardFromLocalStorage() {
   }
 }
 
-function addGarmentsFromSave(event){
-  if(event.target.classList.contains('button-style')){
+function addGarmentsFromSave(event) {
+  if (event.target.classList.contains('button-style')) {
     clearInputField(event);
     resetDataModel(event);
     var clickedOutfit = event.target.id;
@@ -211,17 +207,14 @@ function addGarmentsFromSave(event){
 
 function updateDom(){
   outFitInput.value = currentOutfit.title;
-  for(var i = 0; i < currentOutfit.garments.length; i++){
+  for (var i = 0; i < currentOutfit.garments.length; i++) {
     if (currentOutfit.garments[i] != null) {
       var allBtnsArr = Array.prototype.slice.call(allBtns);
       var garmentBtn = allBtnsArr.find(btn => btn.id === currentOutfit.garments[i]);
       garmentBtn.classList.add('active');
       var garmentsArr = Array.prototype.slice.call(garmentAppear);
       var garmentImg = garmentsArr.find(img => img.classList.contains(currentOutfit.garments[i]));
-      garmentImg.classList.add('active-img')
+      garmentImg.classList.add('active-img');
     }
   }
-  //set title of outfit to inputfield
-//for all 3 garments find corresponding button and add active class
-//add active image class to images from outfit
 }
