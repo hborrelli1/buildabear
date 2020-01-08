@@ -138,8 +138,10 @@ function saveOutfit() {
   var outfitName = saveOutfitInput.value;
   var savedOutfitCard = `<button id="${outfitName}" class="button-style">${outfitName}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
   currentOutfit.title = outfitName;
-  savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
-  outfits.push(currentOutfit.title);
+  if (!outfits.includes(outfitName)) {
+    savedOutfitsList.insertAdjacentHTML('beforeend', savedOutfitCard);
+    outfits.push(currentOutfit.title);
+  }
   window.localStorage.setItem(outfitName, JSON.stringify(currentOutfit));
   window.localStorage.setItem('outfitTitles', JSON.stringify(outfits));
   clearInputField(saveOutfit);
@@ -147,10 +149,15 @@ function saveOutfit() {
 }
 
 function getOutfitCards(){
-  var outfitTitlesParsed = JSON.parse(window.localStorage.getItem('outfitTitles'));
-  for (var i = 0; i < outfitTitlesParsed.length; i++){
-    var outfitButton = `<button id="${outfitTitlesParsed[i]}" class="button-style">${outfitTitlesParsed[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
-    savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
+  if (window.localStorage.getItem('outfitTitles') === null) {
+    var outfitTitlesParsed = [];
+  } else {
+    var outfitTitlesParsed = JSON.parse(window.localStorage.getItem('outfitTitles'));
+    console.log(outfitTitlesParsed.length);
+    for (var i = 0; i < outfitTitlesParsed.length; i++){
+      var outfitButton = `<button id="${outfitTitlesParsed[i]}" class="button-style">${outfitTitlesParsed[i]}<img class="close-btn" src="assets/close.svg" alt="Close"></button>`;
+      savedOutfitsList.insertAdjacentHTML('beforeend', outfitButton);
+    }
   }
 }
 
@@ -198,6 +205,7 @@ function addGarmentsFromSave(event){
     var sourceOutfit = JSON.parse(window.localStorage.getItem(clickedOutfit));
     currentOutfit = Object.assign(currentOutfit, sourceOutfit);
     updateDom();
+    disableSaveButton();
   }
 }
 
